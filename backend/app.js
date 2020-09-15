@@ -45,6 +45,7 @@ if(isProduction){
 
 require('./models/User');
 require('./models/Article');
+require('./models/Tweet');
 require('./models/Comment');
 require('./config/passport');
 
