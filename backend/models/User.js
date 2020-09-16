@@ -9,7 +9,8 @@ var UserSchema = new mongoose.Schema({
   email: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
   bio: String,
   image: String,
-  favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Article' }],
+  favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tweet' }],
+  retweets: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tweet' }],
   following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   hash: String,
   salt: String
@@ -60,7 +61,7 @@ UserSchema.methods.toProfileJSONFor = function(user){
 
 UserSchema.methods.favorite = function(id){
   if(this.favorites.indexOf(id) === -1){
-    this.favorites.push(id);
+    this.favorites = this.favorites.concat(id);
   }
 
   return this.save();
@@ -77,9 +78,28 @@ UserSchema.methods.isFavorite = function(id){
   });
 };
 
+UserSchema.methods.retweet = function(id){
+  if(this.retweets.indexOf(id) === -1){
+    this.retweets = this.retweets.concat(id);
+  }
+
+  return this.save();
+};
+
+UserSchema.methods.unretweet = function(id){
+  this.retweets.remove(id);
+  return this.save();
+};
+
+UserSchema.methods.isRetweet = function(id){
+  return this.retweets.some(function(retweetId){
+    return retweetId.toString() === id.toString();
+  });
+};
+
 UserSchema.methods.follow = function(id){
   if(this.following.indexOf(id) === -1){
-    this.following.push(id);
+    this.following = this.following.concat(id);
   }
 
   return this.save();

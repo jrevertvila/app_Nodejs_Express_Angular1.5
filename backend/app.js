@@ -17,7 +17,7 @@ var http = require('http'),
 
 var isProduction = process.env.NODE_ENV === 'production';
 
-// Create global app object
+// Create global app object 
 var app = express();
 
 app.use(cors());
@@ -39,7 +39,7 @@ if (!isProduction) {
 if(isProduction){
   mongoose.connect(process.env.MONGODB_URI);
 } else {
-  mongoose.connect('mongodb://localhost/conduit_nodejs');
+  mongoose.connect('mongodb://localhost/twentty');
   mongoose.set('debug', true);
 }
 

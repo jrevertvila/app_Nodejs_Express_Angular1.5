@@ -48,15 +48,16 @@ TweetSchema.methods.updateRetweetCount = function() {
 
 TweetSchema.methods.toJSONFor = function(user){
     return {
-      slug: this.slug,
-      body: this.body,
-      createdAt: this.createdAt,
-      updatedAt: this.updatedAt,
-      favorited: user ? user.isFavorite(this._id) : false,
-      favoritesCount: this.favoritesCount,
-      retweeted: user ? user.isRetweet(this._id) : false,
-      retweetsCount: this.retweetsCount,
-      author: this.author.toProfileJSONFor(user)
+        _id: this._id,
+        slug: this.slug,
+        body: this.body,
+        createdAt: this.createdAt,
+        updatedAt: this.updatedAt,
+        favorited: user ? user.isFavorite(this._id) : false,
+        favoritesCount: this.favoritesCount,
+        retweeted: user ? user.isRetweet(this._id) : false,
+        retweetsCount: this.retweetsCount,
+        author: this.author.toProfileJSONFor(user)
     };
   };
   
