@@ -1,0 +1,28 @@
+<tweet-meta tweet="$ctrl.tweet">
+
+  <span ng-show="$ctrl.canModify">
+    <a class="btn btn-sm btn-outline-secondary"
+      ui-sref="app.editor({ slug: $ctrl.tweet.slug })">
+      <i class="ion-edit"></i> Edit Tweet
+    </a>
+
+    <button class="btn btn-sm btn-outline-danger"
+      ng-class="{disabled: $ctrl.isDeleting}"
+      ng-click="$ctrl.deleteTweet()">
+      <i class="ion-trash-a"></i> Delete Tweet
+    </button>
+  </span>
+
+  <span ng-hide="$ctrl.canModify">
+    <follow-btn user="$ctrl.tweet.author"></follow-btn>
+
+    <favorite-btn tweet="$ctrl.tweet">
+      {{ $ctrl.tweet.favorited ? 'Unfavorite' : 'Favorite' }} Tweet <span class="counter">({{$ctrl.tweet.favoritesCount}})</span>
+    </favorite-btn>
+
+    <retweet-btn tweet="$ctrl.tweet">
+      {{ $ctrl.tweet.retweeted ? 'Unretweet' : 'Retweet' }} Tweet <span class="counter">({{$ctrl.tweet.retweetsCount}})</span>
+    </retweet-btn>
+  </span>
+
+</tweet-meta>

@@ -1,9 +1,9 @@
-import authInterceptor from './auth.interceptor'
-
+// import authInterceptor from './auth.interceptor'
+console.log("APP.CONFIG.JS");
 function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterProvider) {
   'ngInject';
 
-  $httpProvider.interceptors.push(authInterceptor);
+  // $httpProvider.interceptors.push(authInterceptor);
 
   /*
     If you don't want hashbang routing, uncomment this line.
@@ -16,9 +16,13 @@ function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterP
     abstract: true,
     templateUrl: 'layout/app-view.html',
     resolve: {
-      auth: function(User) {
-        return User.verifyAuth();
-      }
+        appConf: function(){
+          console.log($urlRouterProvider);
+        }
+      // auth: function(User) {
+      //   console.log("interceptor")
+      //   return User.verifyAuth();
+      // }
     }
   });
 

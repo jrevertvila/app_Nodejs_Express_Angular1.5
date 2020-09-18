@@ -1,6 +1,6 @@
 function authInterceptor(JWT, AppConstants, $window, $q) {
   'ngInject'
-
+    
   return {
     // automatically attach Authorization header
     request: function(config) {

@@ -1,5 +1,5 @@
 import angular from 'angular';
-
+console.log("layout index.js");
 // Create the module where our functionality can attach to
 let layoutModule = angular.module('app.layout', []);
 
