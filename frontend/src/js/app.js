@@ -28,6 +28,7 @@ const requires = [
   // 'app.layout',
   // 'app.components',
   'app.tweet',
+  
   // 'app.home',
   // 'app.profile',
   // 'app.article',

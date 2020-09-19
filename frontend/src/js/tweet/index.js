@@ -13,6 +13,9 @@ tweetModule.config(TweetConfig);
 import TweetCtrl from './tweet.controller';
 tweetModule.controller('TweetCtrl', TweetCtrl);
 
+import TweetsCtrl from './tweets.controller';
+tweetModule.controller('TweetsCtrl', TweetsCtrl);
+
 import TweetActions from './tweet-actions.component';
 tweetModule.component('tweetActions', TweetActions);
 

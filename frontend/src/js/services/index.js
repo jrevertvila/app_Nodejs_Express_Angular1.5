@@ -4,11 +4,11 @@ import angular from 'angular';
 let servicesModule = angular.module('app.services', []);
 
 
-import UserService from './user.service';
-servicesModule.service('User', UserService);
+// import UserService from './user.service';
+// servicesModule.service('User', UserService);
 
-import JwtService from './jwt.service'
-servicesModule.service('JWT', JwtService);
+// import JwtService from './jwt.service'
+// servicesModule.service('JWT', JwtService);
 
 import TweetsService from './tweets.service';
 servicesModule.service('Tweets', TweetsService);
