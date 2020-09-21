@@ -39,8 +39,7 @@
 
 </style>
 <br>
-pelila
-<div ng-repeat="tweet in ::tweets">
+<div ng-repeat="tweet in $ctrl.tweets">
   <a ui-sref="app.tweets({slug:'{{::tweet.slug}}'})" class="preview-link">
     <div class="tweet-canvas">
       <div class="left-side-tweet">
@@ -56,7 +55,6 @@ pelila
           <div><i class="far fa-heart mgClick" ng-click="$ctrl.mgTweet"></i><span> {{::tweet.favoritesCount}}</span></div>
           <div><i class="fas fa-retweet" ng-click="$ctrl.rtTweet"></i><span> {{::tweet.retweetsCount}}</span></div>
           <div><i class="fas fa-external-link-alt"></i></div>
-          
         </div>
       </div>
     </div>
