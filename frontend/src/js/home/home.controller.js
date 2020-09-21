@@ -1,10 +1,11 @@
 class HomeCtrl {
-  constructor(User, Tags, AppConstants, $scope) {
+  constructor(User,tweets, Tags, AppConstants, $scope) {
     'ngInject';
 
+    $scope.tweets = tweets;
     this.appName = AppConstants.appName;
     this._$scope = $scope;
-
+    console.log(tweets);
     // Get list of all tags
     Tags
       .getAll()
@@ -22,9 +23,13 @@ class HomeCtrl {
 
   }
 
-  changeList(newList) {
-    this._$scope.$broadcast('setListTo', newList);
-  }
+  // changeList(newList) {
+  //   this._$scope.$broadcast('setListTo', newList);
+  // }
+
+    // mgTweet(slug) {
+    //   this._$scope.$broadcast('setListTo', newList);
+    // }
 
 
 }

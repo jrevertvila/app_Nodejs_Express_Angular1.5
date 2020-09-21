@@ -4,26 +4,26 @@ import angular from 'angular';
 let servicesModule = angular.module('app.services', []);
 
 
-// import UserService from './user.service';
-// servicesModule.service('User', UserService);
+import UserService from './user.service';
+servicesModule.service('User', UserService);
 
-// import JwtService from './jwt.service'
-// servicesModule.service('JWT', JwtService);
+import JwtService from './jwt.service'
+servicesModule.service('JWT', JwtService);
 
 import TweetsService from './tweets.service';
 servicesModule.service('Tweets', TweetsService);
 
-// import ProfileService from './profile.service';
-// servicesModule.service('Profile', ProfileService);
+import ProfileService from './profile.service';
+servicesModule.service('Profile', ProfileService);
 
-// import ArticlesService from './articles.service';
-// servicesModule.service('Articles', ArticlesService);
+import ArticlesService from './articles.service';
+servicesModule.service('Articles', ArticlesService);
 
-// import CommentsService from './comments.service';
-// servicesModule.service('Comments', CommentsService);
+import CommentsService from './comments.service';
+servicesModule.service('Comments', CommentsService);
 
-// import TagsService from './tags.service';
-// servicesModule.service('Tags', TagsService);
+import TagsService from './tags.service';
+servicesModule.service('Tags', TagsService);
 
 
 export default servicesModule;

@@ -2,25 +2,28 @@ import angular from 'angular';
 
 console.log("tweet index.js");
 // Create the module where our functionality can attach to
-let tweetModule = angular.module('app.tweet', []);
+let tweetsModule = angular.module('app.tweets', []);
 
 // Include our UI-Router config settings
-import TweetConfig from './tweet.config';
-tweetModule.config(TweetConfig);
-
+import TweetsConfig from './tweets.config';
+tweetsModule.config(TweetsConfig);
 
 // Controllers
-import TweetCtrl from './tweet.controller';
-tweetModule.controller('TweetCtrl', TweetCtrl);
-
 import TweetsCtrl from './tweets.controller';
-tweetModule.controller('TweetsCtrl', TweetsCtrl);
+tweetsModule.controller('TweetsCtrl', TweetsCtrl);
 
-import TweetActions from './tweet-actions.component';
-tweetModule.component('tweetActions', TweetActions);
+    //DETAILS CTRL
+import TweetCtrl from './tweet.controller';
+tweetsModule.controller('TweetCtrl', TweetCtrl);
+
+
+
+
+// import TweetActions from './tweet-actions.component';
+// tweetsModule.component('tweetActions', TweetActions);
 
 // import Comment from './comment.component';
 // tweetModule.component('comment', Comment);
 
 
-export default tweetModule;
+export default tweetsModule;

@@ -1,1 +1,69 @@
-<h1>ESTO ES TWEET.HTML</h1>
+<style>
+    .tweet-page{
+        width: 50%;
+        border: 1px solid black;
+        /* padding-left: 120px;
+        padding-right: 120px; */
+        padding: 50px 100px 50px 100px;
+    }
+
+    .header-tweet{
+        bottom: 0;
+        padding: 10px;
+        height: 70px;
+        border: 1px solid black;
+    }
+    .img-user-tweet{
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 15px;
+    }
+
+    .content{
+        display: flex;
+        justify-content: center;
+        
+    }
+    .content-tweet{
+        padding: 20px;
+        min-height: 200px;
+        border: 1px solid black;
+        
+    }
+
+    .footer-tweet{
+        min-height: 50px;
+        border: 1px solid black;
+    }
+
+    .tweet-actions{
+        width: 210px;
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+<div class="content">
+    <article class="tweet-page">
+        <div class="header-tweet">
+            <img class="img-user-tweet" src="{{tweet.author.image}}" alt="userImg">
+            <span>@{{tweet.author.username}}</span>
+        </div>
+        <div class="content-tweet">
+            {{tweet.body}}
+        </div>
+        <div class="footer-tweet">
+            <div class="date-tweet">Date: {{tweet.updatedAt}}</div>
+            <div class="social-data">
+                Favs: {{tweet.favoritesCount}}  RT: {{tweet.retweetsCount}}
+            </div>
+            <div class="tweet-actions">
+                <div><i class="far fa-heart mgClick" ng-click="$ctrl.mgTweet"></i><span> {{::tweet.favoritesCount}}</span></div>
+                <div><i class="fas fa-retweet" ng-click="$ctrl.rtTweet"></i><span> {{::tweet.retweetsCount}}</span></div>
+                <div><i class="fas fa-external-link-alt"></i></div>
+            </div>
+            
+        </div>
+    </article>
+</div>

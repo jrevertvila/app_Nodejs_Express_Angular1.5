@@ -24,6 +24,9 @@ componentsModule.component('articlePreview', ArticlePreview);
 import ArticleList from './article-helpers/article-list.component';
 componentsModule.component('articleList', ArticleList);
 
+import TweetsList from './tweets-helpers/tweets-list.component';
+componentsModule.component('tweetsList', TweetsList);
+
 import ListPagination from './article-helpers/list-pagination.component';
 componentsModule.component('listPagination', ListPagination);
 

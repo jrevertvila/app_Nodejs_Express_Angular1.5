@@ -16,40 +16,92 @@
       <div class="col-md-9">
         <!-- Tabs for toggling between feed, article lists -->
         <div class="feed-toggle">
-          <ul class="nav nav-pills outline-active">
-
-            <li class="nav-item" show-authed="true">
-              <a href="" class="nav-link"
-                ng-class="{ active: $ctrl.listConfig.type === 'feed' }"
-                ng-click="$ctrl.changeList({ type: 'feed' })">
-                Your Feed
-              </a>
-            </li>
+          <ul class="nav nav-pills outline-active">  
 
             <li class="nav-item">
               <a href="" class="nav-link"
                 ng-class="{ active: $ctrl.listConfig.type === 'all' && !$ctrl.listConfig.filters }"
                 ng-click="$ctrl.changeList({ type: 'all' })">
-                Global Feed
-              </a>
-            </li>
-
-            <li class="nav-item" ng-show="$ctrl.listConfig.filters.tag">
-              <a href="" class="nav-link active">
-                <i class="ion-pound"></i> {{$ctrl.listConfig.filters.tag}}
+                Tweets
               </a>
             </li>
 
           </ul>
         </div>
+        <!-- STYLE EMBEDDED OF TWEET (PROVISIONAL) -->
+        <!-- <tweets-list tweets="$ctrl.tweets"></tweets-list> -->
+        <style>
+          .tweet-canvas{
+            padding: 10px 5px 10px 5px;
+            cursor:pointer;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+          }
+          .tweet-canvas:hover{
+            background-color: rgb(248, 248, 248);
+          }
+          .left-side-tweet{
+            width: 7%;
+          }
+          .right-side-tweet{
+            width: 92%;
+            padding-left: 20px;
+            /* border: 1px solid black; */
+            display: flex;
+            flex-direction: column;
+          }
 
+          .img-tweet{
+            max-width: 100%;
+            max-height: 100%;
+            overflow: hidden;
+            border-radius: 50%;
+          }
+          .body-tweet{
+            min-height: 60px;
+          }
+
+          .tweet-actions{
+            width: 210px;
+            display: flex;
+            justify-content: space-between;
+          }
+          
+
+        </style>
+        <br>
+        <div ng-repeat="tweet in ::tweets">
+          <a ui-sref="app.tweets({slug:'{{::tweet.slug}}'})" class="preview-link">
+            <div class="tweet-canvas">
+              <div class="left-side-tweet">
+                <img class="img-tweet" src="https://lh3.googleusercontent.com/ogw/ADGmqu9JLDfGDgsH-2iVX3EGpmAPmGjFlQENC02TiIcv=s83-c-mo" alt="authImg">
+  
+              </div>
+  
+              <div class="right-side-tweet">
+                <div class="author-tweet"><span>@{{::tweet.author.username}}</span></div>
+                <div class="body-tweet"><span>{{::tweet.body}}</span></div>
+                <div class="tweet-actions">
+                  <div><i class="far fa-heart mgClick" ng-click="$ctrl.mgTweet"></i><span> {{::tweet.favoritesCount}}</span></div>
+                  <div><i class="fas fa-retweet" ng-click="$ctrl.rtTweet"></i><span> {{::tweet.retweetsCount}}</span></div>
+                  <div><i class="fas fa-external-link-alt"></i></div>
+                  
+                </div>
+              </div>
+            </div>
+          </a>
+          
+          <hr>
+          
+        </div>
         <!-- List the current articles -->
-        <article-list limit="10" list-config="$ctrl.listConfig"></article-list>
+        <!-- <article-list limit="10" list-config="$ctrl.listConfig"></article-list> -->
 
       </div>
 
       <!-- Sidebar where popular tags are listed -->
-      <div class="col-md-3">
+      <!-- <div class="col-md-3">
         <div class="sidebar">
 
           <p>Popular Tags</p>
@@ -72,7 +124,7 @@
           </div>
 
         </div>
-      </div>
+      </div> -->
 
       <!-- End the row & container divs -->
     </div>

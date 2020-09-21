@@ -1,12 +1,11 @@
 import marked from 'marked';
-console.log("controller tweetsssssssssss")
 class TweetsCtrl {
   // constructor(tweet, User, $sce, $rootScope) {
   constructor(tweets, $sce, $rootScope) {
     'ngInject';
 
     this.tweets = tweets;
-
+    console.log("aaaaaaaaaaaaaaa");
     // this.currentUser = User.current;
 
     $rootScope.setPageTitle("Tweets");
