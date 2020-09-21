@@ -1,7 +1,6 @@
 var router = require('express').Router();
 var mongoose = require('mongoose');
 var Tweet = mongoose.model('Tweet');
-var Comment = mongoose.model('Comment');
 var User = mongoose.model('User');
 var auth = require('../auth');
 

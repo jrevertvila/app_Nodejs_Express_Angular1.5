@@ -4,6 +4,7 @@ router.use('/', require('./users'));
 router.use('/profiles', require('./profiles'));
 router.use('/articles', require('./articles'));
 router.use('/tweets', require('./tweets'));
+router.use('/releases', require('./releases'));
 router.use('/tags', require('./tags'));
 
 router.use(function(err, req, res, next){
