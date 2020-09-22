@@ -1,3 +1,27 @@
-dentro de component details
+<style>
+    .header-release-details{
+        margin-bottom: 40px;
+    }
 
-{{$ctrl.release}}
+    .meta-release-details{
+        width:300px;
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+<article class="release-content">
+    <header class="header-release-details">
+        <h1>{{$ctrl.release.title}}</h1>
+        <div class="meta-release-details">
+            <span>{{$ctrl.release.updatedAt | date : 'longDate'}}</span>
+            <span>{{$ctrl.release.version}}</span>
+            <span>Author: @{{$ctrl.release.author.username}}</span>
+        </div>
+    </header>
+    
+    <div class="release-body">
+        <span>{{$ctrl.release.body}}</span>
+    </div>
+
+</article>

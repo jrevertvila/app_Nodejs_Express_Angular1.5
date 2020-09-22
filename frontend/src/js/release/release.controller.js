@@ -1,7 +1,10 @@
 class ReleaseCtrl {
     // constructor(release, User, $sce, $rootScope) { when add jwt login
-    constructor(release, $scope, $sce, $rootScope) {
+    constructor(release, releases, $scope, $sce, $rootScope) {
         'ngInject';
+
+        this.releases = releases;
+        $scope.releases = this.releases;
         
         this.release = release;
         $scope.release = this.release;

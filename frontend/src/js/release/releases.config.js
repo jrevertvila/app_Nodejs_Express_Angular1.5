@@ -28,6 +28,11 @@ function ReleasesConfig($stateProvider) {
           return Releases.get($stateParams.slug).then(
             (release) => release,
           )
+        },
+        releases: function(Releases) {
+          return Releases.getReleases().then(
+            (releases) => releases,
+          )
         }
       }
     });

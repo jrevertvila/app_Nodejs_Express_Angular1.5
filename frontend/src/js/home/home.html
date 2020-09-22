@@ -39,10 +39,17 @@
       <!-- Sidebar where popular tags are listed -->
       <!-- STYLE EMBEDDED FOR RELEASES IN HOME (PROVISIONAL) -->
       <style>
+        .sidebar-releases{
+          padding: 5px 10px 10px;
+          background: rgb(245 248 250);
+          border-radius: 18px;
+
+        }
+
         .preview-release{
           border-radius: 2px;
           max-height: 230px;
-          min-height: 180px;
+          min-height: 160px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -72,7 +79,7 @@
         }
 
         .footer-preview-release{
-          height: 50px;
+          height: 35px;
           display: flex;
         }
 
@@ -87,9 +94,9 @@
       </style>
 
       <div class="col-md-3">
-        <div class="sidebar">
+        <div class="sidebar-releases">
 
-          <p style="width: 100%; text-align: center; font-size: 20px; font-weight: 600; margin-bottom: -6px;">Lastests Releases</p>
+          <p style="width: 100%; text-align: left; font-size: 20px; font-weight: 600; margin-bottom: -6px; cursor: pointer;" ui-sref="app.releases">Lastests Releases</p>
           <hr>
           <releases-list releases="$ctrl.releases"></releases-list>
 
