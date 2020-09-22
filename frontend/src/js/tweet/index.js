@@ -1,6 +1,5 @@
 import angular from 'angular';
 
-console.log("tweet index.js");
 // Create the module where our functionality can attach to
 let tweetsModule = angular.module('app.tweets', []);
 

@@ -1,4 +1,3 @@
-console.log("APP.JS");
 import angular from 'angular';
 
 // Import our app config files
@@ -12,6 +11,7 @@ import './config/app.templates';
 import './layout';
 import './components';
 import './tweet';
+import './release';
 import './home';
 import './profile';
 import './article';
@@ -28,7 +28,7 @@ const requires = [
   'app.layout',
   'app.components',
   'app.tweets',
-
+  'app.releases',
   'app.home',
   'app.profile',
   'app.article',
@@ -43,11 +43,8 @@ window.app = angular.module('app', requires);
 
 angular.module('app').constant('AppConstants', constants);
 
-// console.log(window.app);
 angular.module('app').config(appConfig);
-// console.log("pasa de config");
 angular.module('app').run(appRun);
-// console.log("pasa de run");
 angular.bootstrap(document, ['app'], {
   strictDi: true
 });

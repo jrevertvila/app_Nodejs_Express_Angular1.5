@@ -10,7 +10,6 @@ function HomeConfig($stateProvider) {
     title: 'Home',
     resolve: {
       tweets: function(Tweets) { 
-        console.log(Tweets.getTweets());
         return Tweets.getTweets().then(
           (Tweets) => Tweets,
         )

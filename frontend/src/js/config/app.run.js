@@ -1,4 +1,3 @@
-console.log("app run");
 function AppRun(AppConstants, $rootScope) {
   'ngInject';
 

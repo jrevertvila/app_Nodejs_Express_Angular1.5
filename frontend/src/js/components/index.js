@@ -1,5 +1,4 @@
 import angular from 'angular';
-console.log("components index.js");
 let componentsModule = angular.module('app.components', []);
 
 
@@ -26,6 +25,12 @@ componentsModule.component('articleList', ArticleList);
 
 import TweetsList from './tweets-helpers/tweets-list.component';
 componentsModule.component('tweetsList', TweetsList);
+
+import ReleasesDetails from './releases-helpers/releases-details.component';
+componentsModule.component('releasesDetails', ReleasesDetails);
+
+import ReleasesList from './releases-helpers/releases-list.component';
+componentsModule.component('releasesList', ReleasesList);
 
 import ListPagination from './article-helpers/list-pagination.component';
 componentsModule.component('listPagination', ListPagination);

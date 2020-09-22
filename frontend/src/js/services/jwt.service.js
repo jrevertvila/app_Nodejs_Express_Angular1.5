@@ -11,7 +11,6 @@ export default class JWT {
   }
 
   get() {
-    console.log("TRY GET JWT")
     return this._$window.localStorage[this._AppConstants.jwtKey];
   }
 

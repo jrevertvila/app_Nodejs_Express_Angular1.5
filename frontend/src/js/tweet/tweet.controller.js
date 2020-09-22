@@ -1,11 +1,9 @@
 import marked from 'marked';
-console.log("controller tweet")
 class TweetCtrl {
   constructor( tweet, User, $sce, $rootScope, $scope) {
     'ngInject';
 
     $scope.tweet = tweet;
-    console.log(tweet);
     this.tweet = tweet;
 
     // this.currentUser = User.current;

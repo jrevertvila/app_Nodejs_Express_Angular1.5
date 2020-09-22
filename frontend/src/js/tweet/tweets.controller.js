@@ -5,7 +5,6 @@ class TweetsCtrl {
     'ngInject';
 
     this.tweets = tweets;
-    console.log("aaaaaaaaaaaaaaa");
     // this.currentUser = User.current;
 
     $rootScope.setPageTitle("Tweets");

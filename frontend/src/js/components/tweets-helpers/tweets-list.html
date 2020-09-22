@@ -35,6 +35,11 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .author-tweet{
+    display: flex;
+    justify-content: space-between;
+  }
   
 
 </style>
@@ -49,7 +54,10 @@
       </div>
 
       <div class="right-side-tweet">
-        <div class="author-tweet"><span>@{{::tweet.author.username}}</span></div>
+        <div class="author-tweet">
+          <span>@{{::tweet.author.username}}</span>
+          <span>{{::tweet.updatedAt  | date: 'longDate'}}</span>
+        </div>
         <div class="body-tweet"><span>{{::tweet.body}}</span></div>
         <div class="tweet-actions">
           <div><i class="far fa-heart mgClick" ng-click="$ctrl.mgTweet"></i><span> {{::tweet.favoritesCount}}</span></div>

@@ -1,0 +1,47 @@
+<style>
+    .preview-release{
+        padding: 15px;
+        cursor: pointer;
+    }
+
+    .preview-release:hover{
+        background-color: rgb(250, 250, 250);
+    }
+
+    .preview-release h1{
+        font-size: 26px;
+        font-weight: 550;
+    }
+    .preview-release p{
+        min-height: 60px;
+    }
+    .footer-preview-release{
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .footer-preview-release div{
+        width: 150px;
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+<div ng-repeat="release in $ctrl.releases">
+
+    <article class="preview-release" ui-sref="app.release({slug:'{{::release.slug}}'})">
+        <h1>{{::release.title}}</h1>
+        <p>{{::release.description}}</p>
+        <div class="footer-preview-release">
+            <div>
+                <span>{{::release.version}}</span>
+                <span> Writed by: {{::release.author.username}}</span>
+            </div>
+            <span>{{::release.updatedAt  | date: 'longDate'}}</span>
+        </div>
+    </article>
+    
+    <hr>
+    
+</div>

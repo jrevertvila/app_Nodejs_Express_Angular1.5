@@ -84,7 +84,6 @@ router.post('/', auth.required, function(req, res, next) {
         tweet.author = user;
     
         return tweet.save().then(function(){
-            console.log(tweet.author);
             return res.json({tweet: tweet.toJSONFor(user)});
         });
     }).catch(next);

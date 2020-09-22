@@ -13,6 +13,9 @@ servicesModule.service('JWT', JwtService);
 import TweetsService from './tweets.service';
 servicesModule.service('Tweets', TweetsService);
 
+import ReleasesService from './releases.service';
+servicesModule.service('Releases', ReleasesService);
+
 import ProfileService from './profile.service';
 servicesModule.service('Profile', ProfileService);
 
