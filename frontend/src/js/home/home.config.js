@@ -13,6 +13,12 @@ function HomeConfig($stateProvider) {
         return Tweets.getTweets().then(
           (Tweets) => Tweets,
         )
+      },
+
+      releases: function(Releases) {
+        return Releases.getReleases().then(
+          (releases) => releases,
+        )
       }
     }
   });

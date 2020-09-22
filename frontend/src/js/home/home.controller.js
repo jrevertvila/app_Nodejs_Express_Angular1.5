@@ -1,8 +1,13 @@
 class HomeCtrl {
-  constructor(User,tweets, Tags, AppConstants, $scope) {
+  constructor(User,tweets, releases, Tags, AppConstants, $scope) {
     'ngInject';
+
     this.tweets = tweets;
     $scope.tweets = this.tweets;
+
+    this.releases = releases;
+    $scope.releases = this.releases;
+
     this.appName = AppConstants.appName;
     this._$scope = $scope;
 

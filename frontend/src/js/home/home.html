@@ -30,101 +30,72 @@
         </div>
         <!-- STYLE EMBEDDED OF TWEET (PROVISIONAL) -->
         <tweets-list tweets="$ctrl.tweets"></tweets-list>
-        <!-- <style>
-          .tweet-canvas{
-            padding: 10px 5px 10px 5px;
-            cursor:pointer;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-          }
-          .tweet-canvas:hover{
-            background-color: rgb(248, 248, 248);
-          }
-          .left-side-tweet{
-            width: 7%;
-          }
-          .right-side-tweet{
-            width: 92%;
-            padding-left: 20px;
-            /* border: 1px solid black; */
-            display: flex;
-            flex-direction: column;
-          }
-
-          .img-tweet{
-            max-width: 100%;
-            max-height: 100%;
-            overflow: hidden;
-            border-radius: 50%;
-          }
-          .body-tweet{
-            min-height: 60px;
-          }
-
-          .tweet-actions{
-            width: 210px;
-            display: flex;
-            justify-content: space-between;
-          }
-          
-
-        </style>
-        <br>
-        <div ng-repeat="tweet in ::tweets">
-          <a ui-sref="app.tweets({slug:'{{::tweet.slug}}'})" class="preview-link">
-            <div class="tweet-canvas">
-              <div class="left-side-tweet">
-                <img class="img-tweet" src="https://lh3.googleusercontent.com/ogw/ADGmqu9JLDfGDgsH-2iVX3EGpmAPmGjFlQENC02TiIcv=s83-c-mo" alt="authImg">
-  
-              </div>
-  
-              <div class="right-side-tweet">
-                <div class="author-tweet"><span>@{{::tweet.author.username}}</span></div>
-                <div class="body-tweet"><span>{{::tweet.body}}</span></div>
-                <div class="tweet-actions">
-                  <div><i class="far fa-heart mgClick" ng-click="$ctrl.mgTweet"></i><span> {{::tweet.favoritesCount}}</span></div>
-                  <div><i class="fas fa-retweet" ng-click="$ctrl.rtTweet"></i><span> {{::tweet.retweetsCount}}</span></div>
-                  <div><i class="fas fa-external-link-alt"></i></div>
-                  
-                </div>
-              </div>
-            </div>
-          </a>
-          
-          <hr>
-          
-        </div> -->
+        
         <!-- List the current articles -->
         <!-- <article-list limit="10" list-config="$ctrl.listConfig"></article-list> -->
 
       </div>
 
       <!-- Sidebar where popular tags are listed -->
-      <!-- <div class="col-md-3">
+      <!-- STYLE EMBEDDED FOR RELEASES IN HOME (PROVISIONAL) -->
+      <style>
+        .preview-release{
+          border-radius: 2px;
+          max-height: 230px;
+          min-height: 180px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 15px;
+          cursor: pointer;
+        }
+
+        .preview-release:hover{
+          background-color: rgba(92, 184, 92, 0.185);
+        }
+
+        .preview-release h1{
+          text-decoration: underline;
+          font-size: 20px;
+          font-weight: 550;
+          overflow: hidden;
+          white-space:nowrap;
+          text-overflow: ellipsis;
+        }
+
+        .preview-release p{
+          line-height: 1.5em;
+          height: 3em;
+          overflow: hidden;
+          /* white-space: nowrap; */
+          text-overflow: ellipsis;
+        }
+
+        .footer-preview-release{
+          height: 50px;
+          display: flex;
+        }
+
+        .footer-preview-release span{
+          align-self: flex-end;
+          font-weight: 600;
+        }
+
+        .footer-preview-release div span{
+          display: none;
+        }
+      </style>
+
+      <div class="col-md-3">
         <div class="sidebar">
 
-          <p>Popular Tags</p>
+          <p style="width: 100%; text-align: center; font-size: 20px; font-weight: 600; margin-bottom: -6px;">Lastests Releases</p>
+          <hr>
+          <releases-list releases="$ctrl.releases"></releases-list>
 
-          <div class="tag-list" ng-show="$ctrl.tags">
-            <a href="" class="tag-default tag-pill"
-              ng-click="$ctrl.changeList({ type: 'all', filters: { tag: tagName } })"
-              ng-repeat="tagName in $ctrl.tags"
-              ng-bind="tagName">
-            </a>
-          </div>
-
-          <div ng-show="!$ctrl.tagsLoaded">
-            Loading tags...
-          </div>
-
-          <div class="post-preview"
-            ng-show="$ctrl.tagsLoaded && !$ctrl.tags.length">
-            No tags are here... yet.
-          </div>
 
         </div>
-      </div> -->
+      </div>
 
       <!-- End the row & container divs -->
     </div>
