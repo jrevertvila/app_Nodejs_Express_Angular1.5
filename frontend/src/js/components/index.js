@@ -26,6 +26,9 @@ componentsModule.component('articleList', ArticleList);
 import TweetsList from './tweets-helpers/tweets-list.component';
 componentsModule.component('tweetsList', TweetsList);
 
+import EditorTweets from './tweets-helpers/editorTweets.component';
+componentsModule.component('editorTweets', EditorTweets);
+
 import ReleasesDetails from './releases-helpers/releases-details.component';
 componentsModule.component('releasesDetails', ReleasesDetails);
 

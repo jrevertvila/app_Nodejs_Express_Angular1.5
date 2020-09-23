@@ -19,6 +19,7 @@ import './services';
 import './auth';
 import './settings';
 import './editor';
+import './editor_tweets';
 
 
 // Create and bootstrap application
@@ -35,7 +36,8 @@ const requires = [
   'app.services',
   'app.auth',
   'app.settings',
-  'app.editor'
+  'app.editor',
+  'app.editorTweets'
 ];
 
 // Mount on window for testing

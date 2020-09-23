@@ -72,4 +72,33 @@ router.post('/users', function(req, res, next){
   }).catch(next);
 });
 
+router.post("/users/sociallogin", function(req, res, next) {
+  let memorystore = req.sessionStore;
+  let sessions = memorystore.sessions;
+  console.log("DENTRO DE POST SOCIALLOGIN");
+  console.log(sessions);
+});
+
+router.get("/auth/github", passport.authenticate("github"));
+
+router.get('/auth/github/callback',
+  passport.authenticate('github', { failureRedirect: '/error' }),
+  function(req, res) {
+    // res.redirect('/success');
+    console.log(req);
+    console.log(res);
+  });
+
+// router.get("/auth/github/callback",
+//   passport.authenticate("github", {
+//     // successRedirect: "http://localhost:4000/#!/auth/sociallogin",
+//     failureRedirect: "/",
+//     function(req, res) {
+//       console.log("SUCCESFUL AUTH GITHUB");
+//       console.log(res)
+//       // Successful authentication, redirect home.
+//       // res.redirect('/');
+//     }
+//   })
+// );
 module.exports = router;

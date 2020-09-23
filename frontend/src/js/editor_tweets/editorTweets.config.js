@@ -6,7 +6,7 @@ function EditorTweetsConfig($stateProvider) {
       url: '/editorTweets/:slug',
       controller: 'EditorTweetsCtrl',
       controllerAs: '$ctrl',
-      templateUrl: 'editor/editorTweets.html',
+      templateUrl: 'editor_tweets/editorTweets.html',
       title: 'Editor Tweets',
       resolve:{
         auth: function(User) {

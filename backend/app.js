@@ -1,3 +1,4 @@
+
 var http = require('http'),
     path = require('path'),
     methods = require('methods'),
@@ -42,7 +43,6 @@ if(isProduction){
   mongoose.connect('mongodb://localhost/twentty');
   mongoose.set('debug', true);
 }
-
 require('./models/User');
 require('./models/Article');
 require('./models/Tweet');

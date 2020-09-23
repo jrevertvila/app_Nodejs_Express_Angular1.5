@@ -12,5 +12,8 @@ authModule.config(AuthConfig);
 import AuthCtrl from './auth.controller';
 authModule.controller('AuthCtrl', AuthCtrl);
 
+import SocialCtrl from './social.controller';
+authModule.controller('SocialCtrl', SocialCtrl);
+
 
 export default authModule;
