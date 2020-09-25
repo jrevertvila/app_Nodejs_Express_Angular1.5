@@ -9,7 +9,7 @@ class SocialCtrl {
   
       // this.title = $state.current.title;
       // this.authType = $state.current.name.replace('app.', '');
-      
+      console.log("SOCIAL LOGIN CTRL");
     }
   }
   export default SocialCtrl;

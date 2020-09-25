@@ -25,19 +25,19 @@ class EditorTweetsCtrl {
     }
   
     submit() {
-      // this.isSubmitting = true;
+      this.isSubmitting = true;
       console.log(this.tweet);
-      // this._Tweets.save(this.tweet).then(
-      //   (newTweet) => {
-      //     this._$state.go('app.tweets', { slug: newTweet.slug });
-      //   },
+      this._Tweets.save(this.tweet).then(
+        (newTweet) => {
+          this._$state.go('app.tweets', { slug: newTweet.slug });
+        },
   
-      //   (err) => {
-      //     this.isSubmitting = false;
-      //     this.errors = err.data.errors;
-      //   }
+        (err) => {
+          this.isSubmitting = false;
+          this.errors = err.data.errors;
+        }
   
-      // )
+      )
     }
   
   

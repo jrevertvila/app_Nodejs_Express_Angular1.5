@@ -9,15 +9,47 @@ var User = mongoose.model('User');
 passport.use(new LocalStrategy({
   usernameField: 'user[email]',
   passwordField: 'user[password]'
-}, function(email, password, done) {
-  User.findOne({email: email}).then(function(user){
-    if(!user || !user.validPassword(password)){
-      return done(null, false, {errors: {'email or password': 'is invalid'}});
+}, function (email, password, done) {
+  User.findOne({ email: email }).then(function (user) {
+    if (!user || !user.validPassword(password)) {
+      return done(null, false, { errors: { 'email or password': 'is invalid' } });
     }
 
     return done(null, user);
   }).catch(done);
 }));
+
+passport.serializeUser(function (user, done) {
+  console.log("serializeUSER");
+  console.log(user);
+  done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+  // User.findById(id, function (err, user) {
+  //   done(err, user);
+  // });
+  console.log("deserializeUSER");
+  console.log(id);
+  // User.findOne({ "_id": id }).then(function (user) {
+  //   console.log(user);
+  //   done(null, user);
+  // })
+  //   .catch(error => {
+  //     console.log(`Error: ${error}`);
+  //   });
+
+  // User.findOne({ "idsocial": id})
+  User.findById(id)
+  .then(user => {
+    console.log(user);
+    done(null, user);
+  })
+  .catch(error => {
+    console.log(`Error: ${error}`);
+  });
+
+});
 
 
 passport.use(new GitHubStrategy({
@@ -25,20 +57,37 @@ passport.use(new GitHubStrategy({
   clientSecret: GITHUB_CLIENT_SECRET,
   callbackURL: "http://localhost:3000/api/auth/github/callback"
 },
-function(accessToken, refreshToken, profile, done) {
-  console.log(GITHUB_CLIENT_ID);
-  console.log(GITHUB_CLIENT_SECRET);
-  console.log("GHub strategy");
-  console.log(profile);
-  // User.findOrCreate({ githubId: profile.id }, function (err, user) {
-  //   return done(err, user);
-  // });
-  // User.findOne({email: email}).then(function(user){
-    // if(!user || !user.validPassword(password)){
-    //   return done(null, false, {errors: {'email or password': 'is invalid'}});
-    // }
-    
-    // return done(null, user);
-  // }).catch(done);
-}));
+  function (accessToken, refreshToken, profile, done) {
+
+    console.log("GHub strategy");
+    console.log(profile);
+
+    User.findOne({ idsocial: profile.id.toString() }, function (err, user) {
+      if (err) {
+        return done(err);
+      }
+
+      if (user) {
+        console.log("created");
+        return done(null, user);
+      } else {
+        var user = new User({
+          idsocial: profile.id,
+          username: profile.username.toLowerCase(),
+          email: profile.username.toLowerCase() + "@gmail.com",
+          image: profile.photos[0].value,
+          type: "client"
+        });
+        user.save(function (err) {
+          // if (err) {
+          console.log(err);
+          return done(null, user);
+          // }
+        });
+      }
+    });
+  }
+));
+
+
 
