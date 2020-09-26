@@ -33,6 +33,7 @@ function AuthConfig($stateProvider, $httpProvider) {
     title: 'Sign up by Social login',
      resolve: {
        auth: function(User) {
+         console.log("CONFIG SOCIALLOGIN");
          return User.ensureAuthIs(false);
        }
      }

@@ -78,32 +78,35 @@ router.post('/users', function (req, res, next) {
   }).catch(next);
 });
 
-router.post("/users/sociallogin", function (req, res, next) {
+router.post("/users/sociallogin", function(req, res, next) {
   let memorystore = req.sessionStore;
   let sessions = memorystore.sessions;
-  console.log("DENTRO DE POST SOCIALLOGIN");
-  console.log(sessions);
+  let sessionUser;
+  for (var key in sessions) {
+    sessionUser = JSON.parse(sessions[key]).passport.user;
+  }
+
+  User.find({ _id: sessionUser }, function(err, user) {
+    user = user[0];
+
+    if (err) return done(err);
+    // if the user is found then log them in
+    if (user) {
+      user.token = user.generateJWT();
+      return res.json({ user: user.toAuthJSON() }); // user found, return that user
+    } else {
+      return res.status(422).json(err);
+    }
+  });
 });
 
 router.get("/auth/github", passport.authenticate("github"));
 
 router.get('/auth/github/callback',
   passport.authenticate("github", {
-    successRedirect: "http://localhost:3000/#!/auth/sociallogin",
+    successRedirect: "http://localhost:4000/#!/auth/sociallogin",
     failureRedirect: "/"
   })
 );
 
-// router.get("/auth/github/callback",
-//   passport.authenticate("github", {
-//     // successRedirect: "http://localhost:4000/#!/auth/sociallogin",
-//     failureRedirect: "/",
-//     function(req, res) {
-//       console.log("SUCCESFUL AUTH GITHUB");
-//       console.log(res)
-//       // Successful authentication, redirect home.
-//       // res.redirect('/');
-//     }
-//   })
-// );
 module.exports = router;

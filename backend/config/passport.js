@@ -26,20 +26,9 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (id, done) {
-  // User.findById(id, function (err, user) {
-  //   done(err, user);
-  // });
   console.log("deserializeUSER");
   console.log(id);
-  // User.findOne({ "_id": id }).then(function (user) {
-  //   console.log(user);
-  //   done(null, user);
-  // })
-  //   .catch(error => {
-  //     console.log(`Error: ${error}`);
-  //   });
 
-  // User.findOne({ "idsocial": id})
   User.findById(id)
   .then(user => {
     console.log(user);
