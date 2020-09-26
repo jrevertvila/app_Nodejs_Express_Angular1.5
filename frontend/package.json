@@ -7,6 +7,9 @@
   "dependencies": {
     "angular": "^1.5.0-rc.2",
     "angular-ui-router": "^0.4.2",
+    "angular-toastr": "^2.1.1",
+    "angular2-toaster": "^6.1.0",
+    "angularjs-toaster": "^3.0.0",
     "babel-preset-es2015": "^6.3.13",
     "babelify": "^7.2.0",
     "browser-sync": "^2.11.1",

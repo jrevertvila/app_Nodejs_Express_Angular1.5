@@ -1,35 +1,39 @@
 class EditorTweetsComponentCtrl {
-    constructor($state, User, Tweets) {
-      'ngInject';
-  
-      this._Tweets = Tweets;
-      this._$state = $state;
-      this.currentUser = User.current;
-    }
-  
-    submit() {
-      this.isSubmitting = true;
-      console.log(this.tweet);
-      this._Tweets.save(this.tweet).then(
-        (success) => location.reload(),
-        (err) => {
-          this.isSubmitting = false;
-          this.errors = err.data.errors;
-          this._$state.go('app.home');
-        }
-  
-      )
-    }
-  
-  
-  
+  constructor($state, User, Tweets, Toastr) {
+    'ngInject';
+    this._toastr = Toastr;
+    this._Tweets = Tweets;
+    this._$state = $state;
+    this.currentUser = User.current;
   }
+
+  submit() {
+    this.isSubmitting = true;
+    this._Tweets.save(this.tweet).then(
+      (success) => {
+        this._toastr.showToastr("success", "Tweet publicado");
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      },
+      (err) => {
+        this.isSubmitting = false;
+        this._toastr.showToastr("error", "No se ha podido publicar el tweet");
+        this.errors = err.data.errors;
+        setTimeout(() => {
+          this._$state.go('app.home');
+        }, 1500);
+        
+      }
+    )
+  }
+}
 
 
 let EditorTweets = {
-    
-    controller: EditorTweetsComponentCtrl,
-    templateUrl: 'components/tweets-helpers/editorTweets.html'
+
+  controller: EditorTweetsComponentCtrl,
+  templateUrl: 'components/tweets-helpers/editorTweets.html'
 };
 
 export default EditorTweets;

@@ -1,7 +1,7 @@
 class AuthCtrl {
-  constructor(User, $state) {
+  constructor(User, $state, Toastr) {
     'ngInject';
-
+    this._toastr = Toastr;
     this._User = User;
     this._$state = $state;
 
@@ -15,10 +15,14 @@ class AuthCtrl {
     console.log("bonica");
     this._User.attemptAuth(this.authType, this.formData).then(
       (res) => {
-        this._$state.go('app.home');
+        this._toastr.showToastr("success", "Loggeado correctamente");
+        setTimeout(() => {
+          this._$state.go('app.home');
+        }, 1500);
       },
       (err) => {
         this.isSubmitting = false;
+        this._toastr.showToastr("error", "No se ha podido loggear. Intentelo de nuevo");
         this.errors = err.data.errors;
       }
     )
