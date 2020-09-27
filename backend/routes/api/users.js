@@ -100,6 +100,8 @@ router.post("/users/sociallogin", function(req, res, next) {
   });
 });
 
+//GITHUB AUTH
+
 router.get("/auth/github", passport.authenticate("github"));
 
 router.get('/auth/github/callback',
@@ -108,5 +110,19 @@ router.get('/auth/github/callback',
     failureRedirect: "/"
   })
 );
+
+//GOOGLE AUTH
+
+router.get('/auth/google',
+  passport.authenticate('google', { scope: 
+      [ 'https://www.googleapis.com/auth/plus.login',
+      , 'https://www.googleapis.com/auth/plus.profile.emails.read' ] }
+));
+
+router.get( '/auth/google/callback', 
+    passport.authenticate( 'google', { 
+        successRedirect: 'http://localhost:4000/#!/auth/sociallogin',
+        failureRedirect: '/'
+}));
 
 module.exports = router;
