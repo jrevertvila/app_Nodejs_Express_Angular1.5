@@ -65,17 +65,29 @@ router.post('/users', function (req, res, next) {
 
   user.username = req.body.user.username;
   user.email = req.body.user.email;
-  if (req.body.user.type) {
-    user.type = req.body.user.type;
-  } else {
-    user.type = "client"
-  }
+  user.provider = "local";
 
-  user.setPassword(req.body.user.password);
+  User.find( { $and:[ {'email':user.email}, {'provider':"local"} ]}, 
+  function(err,user){
+    if(!err){
+      console.log(user);
+    }
+});
 
-  user.save().then(function () {
-    return res.json({ user: user.toAuthJSON() });
-  }).catch(next);
+  
+
+
+  // if (req.body.user.type) {
+  //   user.type = req.body.user.type;
+  // } else {
+  //   user.type = "client"
+  // }
+
+  // user.setPassword(req.body.user.password);
+
+  // user.save().then(function () {
+  //   return res.json({ user: user.toAuthJSON() });
+  // }).catch(next);
 });
 
 router.post("/users/sociallogin", function(req, res, next) {

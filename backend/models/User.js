@@ -13,6 +13,7 @@ var UserSchema = new mongoose.Schema({
   bio: String,
   type: String,
   image: String,
+  provider: String,
   favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tweet' }],
   retweets: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tweet' }],
   following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
