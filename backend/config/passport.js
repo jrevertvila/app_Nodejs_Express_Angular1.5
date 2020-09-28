@@ -11,7 +11,8 @@ passport.use(new LocalStrategy({
   usernameField: 'user[email]',
   passwordField: 'user[password]'
 }, function (email, password, done) {
-  User.findOne({ email: email }).then(function (user) {
+              
+  User.findOne({ $and:[ {'email':email}, {'provider':"local"} ]}).then(function (user) {
     if (!user || !user.validPassword(password)) {
       return done(null, false, { errors: { 'email or password': 'is invalid' } });
     }
@@ -61,9 +62,10 @@ passport.use(new GitHubStrategy({
         console.log("created");
         return done(null, user);
       } else {
+
         var user = new User({
           idsocial: profile.id,
-          username: profile.username.toLowerCase(),
+          username: profile.username + '_' + (Math.random() * Math.pow(36, 6) | 0).toString(36),
           email: profile.username.toLowerCase() + "@gmail.com",
           image: profile.photos[0].value,
           type: "client",
@@ -99,7 +101,7 @@ passport.use(new GoogleStrategy({
       } else {
         var user = new User({
           idsocial: profile.id,
-          username: profile.displayName.split(' ').join('_').toLowerCase(),
+          username: profile.email.split("@")[0].toString(36).replace(/\./g, '_') + '_' + (Math.random() * Math.pow(36, 6) | 0),
           email: profile.email,
           image: profile.photos[0].value,
           type: "client",

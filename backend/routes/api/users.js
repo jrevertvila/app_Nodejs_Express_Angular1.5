@@ -70,24 +70,29 @@ router.post('/users', function (req, res, next) {
   User.find( { $and:[ {'email':user.email}, {'provider':"local"} ]}, 
   function(err,user){
     if(!err){
+      console.log("no error");
       console.log(user);
+    }else{
+      console.log("error");
+      console.log(err);
     }
 });
 
   
 
 
-  // if (req.body.user.type) {
-  //   user.type = req.body.user.type;
-  // } else {
-  //   user.type = "client"
-  // }
+  if (req.body.user.type) {
+    user.type = req.body.user.type;
+  } else {
+    user.type = "client"
+  }
 
-  // user.setPassword(req.body.user.password);
+  user.setPassword(req.body.user.password);
 
-  // user.save().then(function () {
-  //   return res.json({ user: user.toAuthJSON() });
-  // }).catch(next);
+  user.save().then(function () {
+    return res.json({ user: user.toAuthJSON() });
+  }).catch(next);
+  
 });
 
 router.post("/users/sociallogin", function(req, res, next) {
@@ -128,7 +133,8 @@ router.get('/auth/github/callback',
 router.get('/auth/google',
   passport.authenticate('google', { scope: 
       [ 'https://www.googleapis.com/auth/plus.login',
-      , 'https://www.googleapis.com/auth/plus.profile.emails.read' ] }
+      , 'https://www.googleapis.com/auth/plus.profile.emails.read' 
+      , 'https://www.googleapis.com/auth/userinfo.email'] }
 ));
 
 router.get( '/auth/google/callback', 
