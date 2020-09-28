@@ -29,6 +29,9 @@ componentsModule.component('tweetsList', TweetsList);
 import EditorTweets from './tweets-helpers/editorTweets.component';
 componentsModule.component('editorTweets', EditorTweets);
 
+import HomeSlider from './home/homeSlider.component';
+componentsModule.component('homeSlider', HomeSlider);
+
 import ReleasesDetails from './releases-helpers/releases-details.component';
 componentsModule.component('releasesDetails', ReleasesDetails);
 
