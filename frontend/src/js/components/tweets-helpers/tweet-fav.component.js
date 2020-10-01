@@ -1,9 +1,11 @@
-class TweetsListCtrl {
-    constructor($scope, $state, User, Tweets){
+class TweetFavCtrl {
+    constructor(User, $state, Tweets) {
         "ngInject";
-        this._$scope = $scope;
-        this._Tweets = Tweets;
         this._User = User;
+        this._Tweets = Tweets;
+        this._$state = $state;
+        // console.log(tweet);
+        // this.tweet = tweet;
     }
 
     mgTweet() {
@@ -36,12 +38,12 @@ class TweetsListCtrl {
       }
 }
 
-let TweetsList = {
+let TweetFav = {
     bindings: {
-        tweets: '='
+        tweet: '='
     },
-    controller: TweetsListCtrl,
-    templateUrl: 'components/tweets-helpers/tweets-list.html'
+    controller: TweetFavCtrl,
+    templateUrl: 'components/tweets-helpers/tweet-fav.html'
 };
 
-export default TweetsList;
+export default TweetFav;

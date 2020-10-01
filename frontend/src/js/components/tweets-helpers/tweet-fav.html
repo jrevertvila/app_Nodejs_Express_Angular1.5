@@ -1,0 +1,21 @@
+<style>
+  .tweet-actions {
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .mgClickToggled {
+    color: rgb(207, 13, 13);
+  }
+
+  .mgClick:hover {
+    color: rgb(255, 149, 149);
+  }
+</style>
+
+  <div><i class="fas fa-heart mgClick" ng-class="{ 'disabled' : $ctrl.isSubmitting,
+          'mgClick': !$ctrl.tweet.favorited,
+          'mgClickToggled': $ctrl.tweet.favorited }" ng-click="$ctrl.mgTweet()"></i>
+    <span>{{$ctrl.tweet}}</span>
+  </div>

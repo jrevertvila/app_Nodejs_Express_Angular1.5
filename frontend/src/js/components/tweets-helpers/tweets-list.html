@@ -1,18 +1,21 @@
 <style>
-  .tweet-canvas{
+  .tweet-canvas {
     padding: 10px 5px 10px 5px;
-    cursor:pointer;
+    cursor: pointer;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
   }
-  .tweet-canvas:hover{
+
+  .tweet-canvas:hover {
     background-color: rgb(248, 248, 248);
   }
-  .left-side-tweet{
+
+  .left-side-tweet {
     width: 7%;
   }
-  .right-side-tweet{
+
+  .right-side-tweet {
     width: 92%;
     padding-left: 20px;
     /* border: 1px solid black; */
@@ -20,55 +23,59 @@
     flex-direction: column;
   }
 
-  .img-tweet{
+  .img-tweet {
     max-width: 100%;
     max-height: 100%;
     overflow: hidden;
     border-radius: 50%;
   }
-  .body-tweet{
+
+  .body-tweet {
     min-height: 60px;
   }
 
-  .tweet-actions{
+  .tweet-actions {
     width: 210px;
     display: flex;
     justify-content: space-between;
   }
 
-  .author-tweet{
+  .author-tweet {
     font-weight: bold;
     display: flex;
     justify-content: space-between;
   }
-  
-
 </style>
 <br>
 <div ng-repeat="tweet in $ctrl.tweets">
-  <a ui-sref="app.tweets({slug:'{{::tweet.slug}}'})" class="preview-link">
+  <div class="preview-link">
     <div class="tweet-canvas">
-      <div class="left-side-tweet">
+      <div class="left-side-tweet" ui-sref="app.tweets({slug:'{{::tweet.slug}}'})">
         <img class="img-tweet" ng-src="{{tweet.author.image}}" alt="authImg">
         <!-- <img class="img-tweet" src="https://lh3.googleusercontent.com/ogw/ADGmqu9JLDfGDgsH-2iVX3EGpmAPmGjFlQENC02TiIcv=s83-c-mo" alt="authImg"> -->
 
       </div>
 
       <div class="right-side-tweet">
-        <div class="author-tweet">
+        <div class="author-tweet" ui-sref="app.tweets({slug:'{{::tweet.slug}}'})">
           <span>@{{::tweet.author.username}}</span>
           <span>{{::tweet.updatedAt  | date: 'longDate'}}</span>
         </div>
-        <div class="body-tweet"><span>{{::tweet.body}}</span></div>
+        <div class="body-tweet" ui-sref="app.tweets({slug:'{{::tweet.slug}}'})"><span>{{::tweet.body}}</span></div>
         <div class="tweet-actions">
-          <div><i class="far fa-heart mgClick" ng-click="$ctrl.mgTweet"></i><span> {{::tweet.favoritesCount}}</span></div>
+          <!-- <tweet-fav tweet="$ctrl.tweet"></tweet-fav> -->
+          <div><i class="fas fa-heart mgClick" ng-class="{ 'disabled' : $ctrl.isSubmitting,
+            'mgClick': !$ctrl.tweet.favorited,
+            'mgClickToggled': $ctrl.tweet.favorited }" ng-click="$ctrl.mgTweet()"></i>
+            <span>$ctrl.tweet.favoritesCount</span>
+          </div>
           <div><i class="fas fa-retweet" ng-click="$ctrl.rtTweet"></i><span> {{::tweet.retweetsCount}}</span></div>
           <div><i class="fas fa-external-link-alt"></i></div>
         </div>
       </div>
     </div>
-  </a>
-  
+  </div>
+
   <hr>
-  
+
 </div>

@@ -1,0 +1,119 @@
+<style>
+    .container-editor-releases {
+        width: 800px;
+        margin: auto;
+
+    }
+
+    .canvas-input {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .canvas-input span {
+        margin-left: 15px;
+        margin-bottom: 5px;
+        font-size: 20px;
+        font-weight: 600;
+        color: #373a3c;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus,
+    button:focus {
+        outline: none;
+        border: 1.8px solid #5cb85c;
+
+    }
+
+    .input_new_release {
+        border: 1px solid rgb(206, 206, 206);
+        border-radius: 20px;
+        height: 50px;
+        padding-left: 20px;
+        font-weight: 600;
+    }
+
+    .input_new_release_textarea {
+        border: 1px solid rgb(206, 206, 206);
+        border-radius: 20px;
+        min-height: 200px;
+        padding-left: 20px;
+        font-weight: 600;
+    }
+
+    .double_input{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .small_input_new_release {
+        border: 1px solid rgb(206, 206, 206);
+        border-radius: 20px;
+        height: 50px;
+        padding-left: 20px;
+        font-weight: 600;
+        width: 390px;
+
+    }
+
+    .btn-submit-release{
+        border: 1px solid rgb(206, 206, 206);
+        background-color: #5cb85c;
+        color: rgb(255, 255, 255);
+        border-radius: 20px;
+        height: 50px;
+        font-size: 20px;
+        font-weight: 600;
+        min-width: 300px;
+    }
+    
+    .options_release{
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* input{
+        border: none;
+    } */
+</style>
+
+<div class="container-editor-releases">
+    <h1>Create Release</h1>
+    <hr>
+    <div class="canvas-input">
+        <span>Title:</span>
+        <input type="text" name="title_release" id="title_release" class="input_new_release" ng-model="$ctrl.release.title">
+    </div>
+    <div class="canvas-input">
+        <span>Description:</span>
+        <input type="text" name="description_release" id="description_release" class="input_new_release" ng-model="$ctrl.release.description">
+    </div>
+
+    <div class="canvas-input">
+        <span>Body:</span>
+        <textarea name="body_release" id="body_release" class="input_new_release_textarea" ng-model="$ctrl.release.body"></textarea>
+    </div>
+
+    <div class="double_input">
+        <div class="canvas-input">
+            <span>Version:</span>
+            <input type="text" name="version_release" id="version_release" class="small_input_new_release" ng-model="$ctrl.release.version">
+        </div>
+
+        <div class="canvas-input">
+            <span>Release type:</span>
+            <input type="text" name="type_release" id="type_release" class="small_input_new_release">
+        </div>
+    </div>
+    <div class="options_release">
+        <button class="btn-submit-release" type="button" ng-click="$ctrl.submit()">Create Release</button>
+    </div>
+    
+
+</div>

@@ -26,6 +26,9 @@ componentsModule.component('articleList', ArticleList);
 import TweetsList from './tweets-helpers/tweets-list.component';
 componentsModule.component('tweetsList', TweetsList);
 
+import TweetFav from './tweets-helpers/tweet-fav.component';
+componentsModule.component('tweetFav', TweetFav);
+
 import EditorTweets from './tweets-helpers/editorTweets.component';
 componentsModule.component('editorTweets', EditorTweets);
 
