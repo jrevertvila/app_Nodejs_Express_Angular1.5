@@ -17,5 +17,7 @@
   <div><i class="fas fa-heart mgClick" ng-class="{ 'disabled' : $ctrl.isSubmitting,
           'mgClick': !$ctrl.tweet.favorited,
           'mgClickToggled': $ctrl.tweet.favorited }" ng-click="$ctrl.mgTweet()"></i>
-    <span>{{$ctrl.tweet}}</span>
+    <span ng-bind="$ctrl.tweet.favoritesCount">
+      <!-- <ng-transclude></ng-transclude> -->
+    </span>
   </div>

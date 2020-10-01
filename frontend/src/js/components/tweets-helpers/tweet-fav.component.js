@@ -4,18 +4,22 @@ class TweetFavCtrl {
         this._User = User;
         this._Tweets = Tweets;
         this._$state = $state;
-        // console.log(tweet);
+
+        this.$onInit = function(){
+          console.log(this.tweet);
+        }
         // this.tweet = tweet;
+        // console.log(this.tweet);
     }
 
     mgTweet() {
         this.isSubmitting = true;
-    
+    console.log("hola");
         if (!this._User.current) {
           this._$state.go('app.register');
           return;
         }
-    
+        console.log(this.tweet);
         if (this.tweet.favorited) {
           this._Tweets.unfavorite(this.tweet.slug).then(
             () => {
@@ -42,6 +46,7 @@ let TweetFav = {
     bindings: {
         tweet: '='
     },
+    transclude: true,
     controller: TweetFavCtrl,
     templateUrl: 'components/tweets-helpers/tweet-fav.html'
 };
