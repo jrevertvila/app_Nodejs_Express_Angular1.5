@@ -15,12 +15,27 @@ class EditorReleasesCtrl {
           title: '',
           description: '',
           body: '',
+          tagList: [],
           version: ''
         }
       } else {
         this.release = release;
       }
   
+    }
+
+    addTag() {
+      if (!this.release.tagList.includes(this.tagField)) {
+        console.log(this.tagField);
+        this.release.tagList.push(this.tagField);
+        console.log(this.release);
+        this.tagField = '';
+      }
+      
+    }
+  
+    removeTag(tagName) {
+      this.release.tagList = this.release.tagList.filter((slug) => slug != tagName);
     }
   
     submit() {

@@ -63,9 +63,7 @@
         </div>
         <div class="body-tweet" ui-sref="app.tweets({slug:'{{::tweet.slug}}'})"><span>{{::tweet.body}}</span></div>
         <div class="tweet-actions">
-          <tweet-fav tweet="tweet">
-            {{::tweet.favoritesCount}}
-          </tweet-fav>
+          <tweet-fav tweet="tweet"></tweet-fav>
           <!-- <div><i class="fas fa-heart mgClick" ng-class="{ 'disabled' : $ctrl.isSubmitting,
             'mgClick': !$ctrl.tweet.favorited,
             'mgClickToggled': $ctrl.tweet.favorited }" ng-click="$ctrl.mgTweet()"></i>

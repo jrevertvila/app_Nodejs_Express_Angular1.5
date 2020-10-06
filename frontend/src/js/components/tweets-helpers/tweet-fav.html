@@ -7,17 +7,24 @@
 
   .mgClickToggled {
     color: rgb(207, 13, 13);
+    cursor: pointer;
+  }
+
+  .mgClickToggled:hover {
+    color: rgb(255, 149, 149);
+    cursor: pointer;
   }
 
   .mgClick:hover {
     color: rgb(255, 149, 149);
+    cursor: pointer;
   }
 </style>
 
-  <div><i class="fas fa-heart mgClick" ng-class="{ 'disabled' : $ctrl.isSubmitting,
+<div><i class="fas fa-heart mgClick" ng-class="{ 'disabled' : $ctrl.isSubmitting,
           'mgClick': !$ctrl.tweet.favorited,
           'mgClickToggled': $ctrl.tweet.favorited }" ng-click="$ctrl.mgTweet()"></i>
-    <span ng-bind="$ctrl.tweet.favoritesCount">
-      <!-- <ng-transclude></ng-transclude> -->
-    </span>
-  </div>
+  <span ng-bind="$ctrl.tweet.favoritesCount">
+    <!-- <ng-transclude></ng-transclude> -->
+  </span>
+</div>

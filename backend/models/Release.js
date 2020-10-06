@@ -9,6 +9,7 @@ var ReleaseSchema = new mongoose.Schema({
     description: String,
     body: String,
     version: String,
+    tagList: [{ type: String }],
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 }, {timestamps: true});
 
@@ -34,6 +35,7 @@ ReleaseSchema.methods.toJSONFor = function(user){
         description: this.description,
         body: this.body,
         version: this.version,
+        tagList: this.tagList,
         createdAt: this.createdAt,
         updatedAt: this.updatedAt,
         author: this.author.toProfileJSONFor(user)

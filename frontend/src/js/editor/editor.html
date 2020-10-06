@@ -9,37 +9,27 @@
           <fieldset ng-disabled="$ctrl.isSubmitting">
 
             <fieldset class="form-group">
-              <input class="form-control form-control-lg"
-                ng-model="$ctrl.article.title"
-                type="text"
+              <input class="form-control form-control-lg" ng-model="$ctrl.article.title" type="text"
                 placeholder="Article Title" />
             </fieldset>
 
             <fieldset class="form-group">
-              <input class="form-control"
-                ng-model="$ctrl.article.description"
-                type="text"
+              <input class="form-control" ng-model="$ctrl.article.description" type="text"
                 placeholder="What's this article about?" />
             </fieldset>
 
             <fieldset class="form-group">
-              <textarea class="form-control"
-                rows="8"
-                ng-model="$ctrl.article.body"
+              <textarea class="form-control" rows="8" ng-model="$ctrl.article.body"
                 placeholder="Write your article (in markdown)">
               </textarea>
             </fieldset>
 
             <fieldset class="form-group">
-              <input class="form-control"
-                type="text"
-                placeholder="Enter tags"
-                ng-model="$ctrl.tagField"
+              <input class="form-control" type="text" placeholder="Enter tags" ng-model="$ctrl.tagField"
                 ng-keyup="$event.keyCode == 13 && $ctrl.addTag()" />
 
               <div class="tag-list">
-                <span ng-repeat="tag in $ctrl.article.tagList"
-                  class="tag-default tag-pill">
+                <span ng-repeat="tag in $ctrl.article.tagList" class="tag-default tag-pill">
                   <i class="ion-close-round" ng-click="$ctrl.removeTag(tag)"></i>
                   {{ tag }}
                 </span>

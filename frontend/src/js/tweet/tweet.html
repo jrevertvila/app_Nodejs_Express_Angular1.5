@@ -59,7 +59,7 @@
                 Favs: {{tweet.favoritesCount}}  RT: {{tweet.retweetsCount}}
             </div>
             <div class="tweet-actions">
-                <div><i class="far fa-heart mgClick" ng-click="$ctrl.mgTweet"></i><span> {{::tweet.favoritesCount}}</span></div>
+                <tweet-fav tweet="tweet"></tweet-fav>
                 <div><i class="fas fa-retweet" ng-click="$ctrl.rtTweet"></i><span> {{::tweet.retweetsCount}}</span></div>
                 <div><i class="fas fa-external-link-alt"></i></div>
             </div>
