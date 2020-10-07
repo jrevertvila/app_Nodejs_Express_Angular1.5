@@ -21,10 +21,16 @@ router.param('release', function (req, res, next, slug) {
 
 router.get('/', auth.optional, function (req, res, next) {
     var query = {};
-
+    var limit = 30;
+    var offset = 0;
     if (typeof req.query.tag !== 'undefined') {
         query.tagList = { "$in": [req.query.tag] };
     }
+
+    if(typeof req.query.limit !== 'undefined'){
+        limit = req.query.limit;
+      }
+    
 
     Promise.all([
         req.query.author ? User.findOne({ username: req.query.author }) : null, //comprueba que exista el author
@@ -37,6 +43,8 @@ router.get('/', auth.optional, function (req, res, next) {
 
         return Promise.all([
             Release.find(query)
+                .limit(Number(limit))
+                .skip(Number(offset))
                 .sort({ createdAt: 'desc' })
                 .populate('author')
                 .exec(),

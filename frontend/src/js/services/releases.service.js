@@ -16,13 +16,14 @@ export default class Releases {
     }
 
        
-    getReleases() {
+    getReleases(limit) {
         
         // Create the $http object for this request
         //_AppConstants =  api: 'http://localhost:3000/api',
         return this._$http({
             url: this._AppConstants.api + '/releases/', 
-            method: 'GET'
+            method: 'GET',
+            params: {limit : limit} //Indicar cuantas releases queremos obtener (enviar data por params)
         }).then(res => {
             return res.data.releases
         }

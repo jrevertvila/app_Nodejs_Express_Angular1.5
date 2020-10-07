@@ -1,47 +1,18 @@
  <div class="home-page">
 
-  <!-- Splash banner that only shows when not logged in -->
-  <!-- <div class="banner">
-    <div class="container">
-      <h1 class="logo-font" ng-bind="::$ctrl.appName | lowercase"></h1>
-      <p>A place to share your knowledge.</p>
-    </div>
-  </div> -->
-
   <home-slider></home-slider>
 
   <div class="container page">
     <div class="row">
 
-
-      <!-- Main view - contains tabs & article list -->
       <div class="col-md-9">
-        <!-- Tabs for toggling between feed, article lists -->
-        <!-- <div class="feed-toggle">
-          <ul class="nav nav-pills outline-active">  
-
-            <li class="nav-item">
-              <a href="" class="nav-link"
-                ng-class="{ active: $ctrl.listConfig.type === 'all' && !$ctrl.listConfig.filters }"
-                ng-click="$ctrl.changeList({ type: 'all' })">
-                Tweets
-              </a>
-            </li>
-
-          </ul>
-        </div> -->
 
         <editor-tweets show-authed="true"></editor-tweets>
 
-        <!-- STYLE EMBEDDED OF TWEET (PROVISIONAL) -->
         <tweets-list tweets="$ctrl.tweets"></tweets-list>
-        
-        <!-- List the current articles -->
-        <!-- <article-list limit="10" list-config="$ctrl.listConfig"></article-list> -->
 
       </div>
 
-      <!-- Sidebar where popular tags are listed -->
       <!-- STYLE EMBEDDED FOR RELEASES IN HOME (PROVISIONAL) -->
       <style>
         .sidebar-releases{

@@ -16,7 +16,7 @@ function HomeConfig($stateProvider) {
       },
 
       releases: function(Releases) {
-        return Releases.getReleases().then(
+        return Releases.getReleases(3).then(
           (releases) => releases,
         )
       }
