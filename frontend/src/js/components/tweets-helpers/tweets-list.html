@@ -47,37 +47,7 @@
   }
 </style>
 <br>
-<div ng-repeat="tweet in $ctrl.tweets">
-  <div class="preview-link">
-    <div class="tweet-canvas">
-      <div class="left-side-tweet" ui-sref="app.tweets({slug:'{{::tweet.slug}}'})">
-        <img class="img-tweet" ng-src="{{tweet.author.image}}" alt="authImg">
-        <!-- <img class="img-tweet" src="https://lh3.googleusercontent.com/ogw/ADGmqu9JLDfGDgsH-2iVX3EGpmAPmGjFlQENC02TiIcv=s83-c-mo" alt="authImg"> -->
-
-      </div>
-
-      <div class="right-side-tweet">
-        <div class="author-tweet" ui-sref="app.tweets({slug:'{{::tweet.slug}}'})">
-          <span>@{{::tweet.author.username}}</span>
-          <span>{{::tweet.updatedAt  | date: 'longDate'}}</span>
-        </div>
-        <div class="body-tweet" ui-sref="app.tweets({slug:'{{::tweet.slug}}'})"><span>{{::tweet.body}}</span></div>
-        <div class="tweet-actions">
-          <tweet-fav tweet="tweet"></tweet-fav>
-          <!-- <div><i class="fas fa-heart mgClick" ng-class="{ 'disabled' : $ctrl.isSubmitting,
-            'mgClick': !$ctrl.tweet.favorited,
-            'mgClickToggled': $ctrl.tweet.favorited }" ng-click="$ctrl.mgTweet()"></i>
-            <span>{{::tweet.favoritesCount}}</span>
-          </div> -->
-
-          <!-- <span>{{::tweet.favoritesCount}}</span> -->
-          <div><i class="fas fa-retweet" ng-click="$ctrl.rtTweet"></i><span> {{::tweet.retweetsCount}}</span></div>
-          <div><i class="fas fa-external-link-alt"></i></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <hr>
+<div>
+  <tweet-preview tweet="tweet" ng-repeat="tweet in $ctrl.tweets"></tweet-preview>
 
 </div>
