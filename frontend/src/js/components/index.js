@@ -35,6 +35,9 @@ componentsModule.component('tweetActions', TweetActions);
 import TweetFav from './tweets-helpers/actions/tweet-fav.component';
 componentsModule.component('tweetFav', TweetFav);
 
+import TweetComments from './tweets-helpers/tweet-comments.component';
+componentsModule.component('tweetComments', TweetComments);
+
 import EditorTweets from './tweets-helpers/editorTweets.component';
 componentsModule.component('editorTweets', EditorTweets);
 
