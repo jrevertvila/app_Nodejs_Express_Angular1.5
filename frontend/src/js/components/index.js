@@ -29,7 +29,10 @@ componentsModule.component('tweetsList', TweetsList);
 import TweetPreview from './tweets-helpers/tweet-preview.component';
 componentsModule.component('tweetPreview', TweetPreview);
 
-import TweetFav from './tweets-helpers/tweet-fav.component';
+import TweetActions from './tweets-helpers/actions/tweet-actions.component';
+componentsModule.component('tweetActions', TweetActions);
+
+import TweetFav from './tweets-helpers/actions/tweet-fav.component';
 componentsModule.component('tweetFav', TweetFav);
 
 import EditorTweets from './tweets-helpers/editorTweets.component';

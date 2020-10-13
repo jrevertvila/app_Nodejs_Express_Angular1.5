@@ -10,15 +10,9 @@
                 <span>{{$ctrl.tweet.updatedAt  | date: 'longDate'}}</span>
             </div>
             <div class="body-tweet" ui-sref="app.tweets({slug:'{{$ctrl.tweet.slug}}'})">
-                <span>{{$ctrl.tweet.body}}</span></div>
-            <div class="tweet-actions">
-                <tweet-fav tweet="$ctrl.tweet"></tweet-fav>
-
-                <div><i class="fas fa-retweet" ng-click="$ctrl.rtTweet"></i><span> {{$ctrl.tweet.retweetsCount}}</span>
-                </div>
-                <div><i class="fas fa-external-link-alt"></i></div>
-                <div ng-show="$ctrl.canModify" ng-click="$ctrl.deleteTweet()"><i class="fas fa-trash-alt"></i></div>
+                <span>{{$ctrl.tweet.body}}</span>
             </div>
+            <tweet-actions tweet="$ctrl.tweet"></tweet-actions>
         </div>
     </div>
 </div>

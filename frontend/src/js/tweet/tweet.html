@@ -58,11 +58,7 @@
             <div class="social-data">
                 Favs: {{tweet.favoritesCount}}  RT: {{tweet.retweetsCount}}
             </div>
-            <div class="tweet-actions">
-                <tweet-fav tweet="tweet"></tweet-fav>
-                <div><i class="fas fa-retweet" ng-click="$ctrl.rtTweet"></i><span> {{::tweet.retweetsCount}}</span></div>
-                <div><i class="fas fa-external-link-alt"></i></div>
-            </div>
+            <tweet-actions tweet="$ctrl.tweet"></tweet-actions>
             
         </div>
     </article>

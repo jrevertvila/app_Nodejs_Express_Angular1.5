@@ -48,7 +48,7 @@ let TweetFav = {
     },
     transclude: true,
     controller: TweetFavCtrl,
-    templateUrl: 'components/tweets-helpers/tweet-fav.html'
+    templateUrl: 'components/tweets-helpers/actions/tweet-fav.html'
 };
 
 export default TweetFav;
