@@ -19,6 +19,7 @@ class EditorReleasesCtrl {
           version: ''
         }
       } else {
+        this.isEdit = true;
         this.release = release;
       }
   

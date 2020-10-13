@@ -1,11 +1,11 @@
 <div class="preview-link">
     <div class="tweet-canvas">
-        <div class="left-side-tweet" ui-sref="app.tweets({slug:'{{$ctrl.tweet.slug}}'})">
+        <div class="left-side-tweet" ui-sref="app.profile.main({ username: $ctrl.tweet.author.username})">
             <img class="img-tweet" ng-src="{{$ctrl.tweet.author.image}}" alt="authImg">
         </div>
 
         <div class="right-side-tweet">
-            <div class="author-tweet" ui-sref="app.tweets({slug:'{{$ctrl.tweet.slug}}'})">
+            <div class="author-tweet" ui-sref="app.profile.main({ username: $ctrl.tweet.author.username})">
                 <span>@{{$ctrl.tweet.author.username}}</span>
                 <span>{{$ctrl.tweet.updatedAt  | date: 'longDate'}}</span>
             </div>

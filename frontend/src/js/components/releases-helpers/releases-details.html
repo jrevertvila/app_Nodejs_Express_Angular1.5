@@ -19,6 +19,7 @@
             <span>Author: @{{$ctrl.release.author.username}}</span>
         </div>
         <button type="button" class="btn btn-danger" ng-show="$ctrl.canModify" ng-click="$ctrl.removeRelease()">Remove</button>
+        <button type="button" class="btn btn-warning" ng-show="$ctrl.canModify" ui-sref="app.editorReleases({slug:'{{$ctrl.release.slug}}'})">Edit</button>
     </header>
     
     <div class="release-body">
