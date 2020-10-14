@@ -8,7 +8,9 @@ var TweetSchema = new mongoose.Schema({
     body: String,
     favoritesCount: {type: Number, default: 0},
     retweetsCount: {type: Number, default: 0},
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+    // comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+    replies : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tweet' }],
+    parent : { type: mongoose.Schema.Types.ObjectId, ref: 'Tweet' },
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 }, {timestamps: true});
 
@@ -46,6 +48,14 @@ TweetSchema.methods.updateRetweetCount = function() {
     });
 };
 
+// TweetSchema.methods.reply = function(id){
+//     if(this.replies.indexOf(id) === -1){
+//       this.replies = this.replies.concat(id);
+//     }
+  
+//     return this.save();
+// };
+
 TweetSchema.methods.toJSONFor = function(user){
     return {
         _id: this._id,
@@ -57,6 +67,8 @@ TweetSchema.methods.toJSONFor = function(user){
         favoritesCount: this.favoritesCount,
         retweeted: user ? user.isRetweet(this._id) : false,
         retweetsCount: this.retweetsCount,
+        parent: this.parent,
+        replies: this.replies,
         author: this.author.toProfileJSONFor(user)
     };
   };

@@ -6,7 +6,7 @@ class TweetFavCtrl {
         this._$state = $state;
 
         this.$onInit = function(){
-          console.log(this.tweet);
+          // console.log(this.tweet);
         }
         // this.tweet = tweet;
         // console.log(this.tweet);
@@ -14,12 +14,10 @@ class TweetFavCtrl {
 
     mgTweet() {
         this.isSubmitting = true;
-    console.log("hola");
         if (!this._User.current) {
           this._$state.go('app.register');
           return;
         }
-        console.log(this.tweet);
         if (this.tweet.favorited) {
           this._Tweets.unfavorite(this.tweet.slug).then(
             () => {

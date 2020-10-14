@@ -129,6 +129,8 @@ router.put('/:release', auth.required, function (req, res, next) {
             if (typeof req.body.release.version !== 'undefined') {
                 req.release.version = req.body.release.version;
             }
+            console.log("AAAAAAAAAAAAAAAAAAAAAVVVVVVVVFBVFGSAFSDDASDDASDSADDASD")
+            console.log(req.release);
 
             req.release.save().then(function (release) {
                 return res.json({ release: release.toJSONFor(user) });

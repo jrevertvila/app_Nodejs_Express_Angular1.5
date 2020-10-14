@@ -5,9 +5,15 @@ class EditorTweetsComponentCtrl {
     this._Tweets = Tweets;
     this._$state = $state;
     this.currentUser = User.current;
+
+    this.$onInit = function () {
+      // console.log("aaaa");
+      // console.log(this.parent);
+    };
   }
 
   submit() {
+    this.parent == undefined ? this.tweet.parent = null : this.tweet.parent = this.parent;
     this.isSubmitting = true;
     this._Tweets.save(this.tweet).then(
       (success) => {
@@ -31,6 +37,9 @@ class EditorTweetsComponentCtrl {
 
 
 let EditorTweets = {
+  bindings: {
+    parent: '='
+  },
 
   controller: EditorTweetsComponentCtrl,
   templateUrl: 'components/tweets-helpers/editorTweets.html'

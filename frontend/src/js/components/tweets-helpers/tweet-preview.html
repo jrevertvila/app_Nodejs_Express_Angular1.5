@@ -1,3 +1,53 @@
+<style>
+    .tweet-canvas {
+    padding: 10px 5px 10px 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .tweet-canvas:hover {
+    background-color: rgb(248, 248, 248);
+  }
+
+  .left-side-tweet {
+    width: 7%;
+  }
+
+  .right-side-tweet {
+    width: 92%;
+    padding-left: 20px;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .img-tweet {
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  .body-tweet {
+    min-height: 60px;
+  }
+
+  .tweet-actions {
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .author-tweet {
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+
 <div class="preview-link">
     <div class="tweet-canvas">
         <div class="left-side-tweet" ui-sref="app.profile.main({ username: $ctrl.tweet.author.username})">
