@@ -7,6 +7,7 @@ class TweetPreviewCtrl {
         this._Tweets = Tweets;
         this.$onInit = function () {
             if (this._User.current) this.canModify = (this._User.current.username == this.tweet.author.username ? true : false);
+            console.log(this.tweet);
         };
 
     }

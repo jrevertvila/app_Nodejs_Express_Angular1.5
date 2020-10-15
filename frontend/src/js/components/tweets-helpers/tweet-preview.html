@@ -14,6 +14,8 @@
 
   .left-side-tweet {
     width: 7%;
+    display: flex;
+    flex-direction: column;
   }
 
   .right-side-tweet {
@@ -52,6 +54,7 @@
     <div class="tweet-canvas">
         <div class="left-side-tweet" ui-sref="app.profile.main({ username: $ctrl.tweet.author.username})">
             <img class="img-tweet" ng-src="{{$ctrl.tweet.author.image}}" alt="authImg">
+            <follow-btn user="$ctrl.tweet.author" ng-hide="$ctrl.canModify"></follow-btn>
         </div>
 
         <div class="right-side-tweet">

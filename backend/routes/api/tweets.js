@@ -70,8 +70,8 @@ router.get('/', auth.optional, function (req, res, next) {
       // return res;
       return res.json({
         tweets: tweets.map(function (tweet) {
-          // return tweet.toJSONFor(user);
-          return tweet
+          return tweet.toJSONFor(user);
+          // return tweet
         }),
         tweetsCount: tweetsCount
       });
@@ -88,32 +88,17 @@ router.post('/', auth.required, function (req, res, next) {
 
     var tweet = new Tweet(req.body.tweet);
     tweet.author = user;
-    console.log("aaaaaaaadasdasdsadasjdkahsbd hasdjashdsiaujdhasiudashdiusadshauid");
-    console.log(tweet.parent);
     //sustituir slug por tweet.parent (slug del parent)
     Tweet.findOne({ _id: tweet.parent }).then(function (data) {
-      console.log(data);
 
       if (data) {
         tweet.parent = data;
-        // data.replies.push(tweet);
-        // data.save().then(function (data) {
-        //   console.log("Comment added successfully");
-        // });
 
         return tweet.save().then(function(){
-          console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-          console.log(tweet);
-          console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
           data.replies = data.replies.concat(tweet._id);
-          // data.replies.push(tweet);
-          console.log(data);
           
           return data.save().then(function() {
-            console.log("THEEEEEEEEEEEEENNNNNNN");
             res.json({ tweet: tweet.toJSONFor(user) });
-          }).catch((e)=>{
-            console.log(e);
           });
         });
 
