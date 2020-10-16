@@ -12,8 +12,8 @@ export default class Tweets {
         // Create the $http object for this request
         //_AppConstants =  api: 'http://localhost:3000/api',
         let request = {
-            // url: this._AppConstants.api + '/tweets' + ((config.type === 'feed') ? '/feed' : ''),
-            url: this._AppConstants.api + '/tweets',
+            url: this._AppConstants.api + '/tweets' + ((config.type === 'feed') ? '/feed' : ''),
+            // url: this._AppConstants.api + '/tweets',
             method: 'GET',
             params: config.filters ? config.filters : null
         };

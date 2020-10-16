@@ -9,11 +9,11 @@ function HomeConfig($stateProvider) {
     templateUrl: 'home/home.html',
     title: 'Home',
     resolve: {
-      tweets: function(Tweets) { 
-        return Tweets.getTweets().then(
-          (Tweets) => Tweets,
-        )
-      },
+      // tweets: function(Tweets) { 
+      //   return Tweets.getTweets().then(
+      //     (Tweets) => Tweets,
+      //   )
+      // },
 
       releases: function(Releases) {
         return Releases.getReleases().then(

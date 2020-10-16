@@ -64,10 +64,6 @@ router.get('/', auth.optional, function (req, res, next) {
       var tweets = results[0];
       var tweetsCount = results[1];
       var user = results[2];
-      console.log(res);
-      // return res;
-      console.log(res);
-      // return res;
       return res.json({
         tweets: tweets.map(function (tweet) {
           return tweet.toJSONFor(user);
@@ -77,6 +73,45 @@ router.get('/', auth.optional, function (req, res, next) {
       });
     });
   }).catch(next);
+});
+
+router.get('/feed', auth.required, function(req, res, next) {
+  var limit = 20;
+  var offset = 0;
+
+  if(typeof req.query.limit !== 'undefined'){
+    limit = req.query.limit;
+  }
+
+  if(typeof req.query.offset !== 'undefined'){
+    offset = req.query.offset;
+  }
+
+  // query.parent = null; //not show replies
+
+  User.findById(req.payload.id).then(function(user){
+    if (!user) { return res.sendStatus(401); }
+
+    Promise.all([
+      Tweet.find({ author: {$in: user.following}})
+        .limit(Number(limit))
+        .skip(Number(offset))
+        .populate('author')
+        .populate('parent')
+        .exec(),
+      Tweet.count({ author: {$in: user.following}})
+    ]).then(function(results){
+      var tweets = results[0];
+      var tweetsCount = results[1];
+
+      return res.json({
+        tweets: tweets.map(function(tweet){
+          return tweet.toJSONFor(user);
+        }),
+        tweetsCount: tweetsCount
+      });
+    }).catch(next);
+  });
 });
 
 //----- TWEET OPTIONS CRUD-----

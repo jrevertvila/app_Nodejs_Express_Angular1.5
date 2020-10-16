@@ -52,8 +52,8 @@
 
 <div class="preview-link">
     <div class="tweet-canvas">
-        <div class="left-side-tweet" ui-sref="app.profile.main({ username: $ctrl.tweet.author.username})">
-            <img class="img-tweet" ng-src="{{$ctrl.tweet.author.image}}" alt="authImg">
+        <div class="left-side-tweet">
+            <img class="img-tweet" ng-src="{{$ctrl.tweet.author.image}}" alt="authImg" ui-sref="app.profile.main({ username: $ctrl.tweet.author.username})">
             <follow-btn user="$ctrl.tweet.author" ng-hide="$ctrl.canModify"></follow-btn>
         </div>
 

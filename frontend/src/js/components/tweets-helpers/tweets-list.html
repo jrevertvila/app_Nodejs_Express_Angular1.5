@@ -3,6 +3,11 @@
 </style>
 <br>
 <div>
-  <tweet-preview tweet="tweet" ng-repeat="tweet in $ctrl.tweets"></tweet-preview>
-
+  <tweet-preview tweet="tweet" ng-repeat="tweet in $ctrl.list"></tweet-preview>
+  
+  <list-pagination
+    total-pages="$ctrl.listConfig.totalPages"
+    current-page="$ctrl.listConfig.currentPage"
+    ng-hide="$ctrl.listConfig.totalPages <= 1">
+  </list-pagination>
 </div>

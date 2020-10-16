@@ -50,7 +50,7 @@ componentsModule.component('releasesDetails', ReleasesDetails);
 import ReleasesList from './releases-helpers/releases-list.component';
 componentsModule.component('releasesList', ReleasesList);
 
-import ListPagination from './article-helpers/list-pagination.component';
+import ListPagination from './tweets-helpers/list-pagination.component';
 componentsModule.component('listPagination', ListPagination);
 
 export default componentsModule;

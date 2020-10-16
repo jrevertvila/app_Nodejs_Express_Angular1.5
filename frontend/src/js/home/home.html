@@ -9,7 +9,37 @@
 
         <editor-tweets show-authed="true"></editor-tweets>
 
-        <tweets-list tweets="$ctrl.tweets"></tweets-list>
+        <br><br>
+
+        <div class="feed-toggle">
+          <ul class="nav nav-pills outline-active">
+
+            <li class="nav-item" show-authed="true">
+              <a href="" class="nav-link"
+                ng-class="{ active: $ctrl.listConfig.type === 'feed' }"
+                ng-click="$ctrl.changeList({ type: 'feed' })">
+                Your Feed
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="" class="nav-link"
+                ng-class="{ active: $ctrl.listConfig.type === 'all' && !$ctrl.listConfig.filters }"
+                ng-click="$ctrl.changeList({ type: 'all' })">
+                Global Feed
+              </a>
+            </li>
+
+            <li class="nav-item" ng-show="$ctrl.listConfig.filters.tag">
+              <a href="" class="nav-link active">
+                <i class="ion-pound"></i> {{$ctrl.listConfig.filters.tag}}
+              </a>
+            </li>
+
+          </ul>
+        </div><br>
+
+        <tweets-list limit="5" list-config="$ctrl.listConfig"></tweets-list>
 
       </div>
 
