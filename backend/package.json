@@ -40,6 +40,7 @@
     "underscore": "1.8.3"
   },
   "devDependencies": {
+    "faker": "^5.1.0",
     "newman": "^3.8.2",
     "nodemon": "^1.11.0",
     "passport-google-oauth2": "^0.2.0"
