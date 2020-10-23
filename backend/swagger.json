@@ -1,9 +1,9 @@
 {
     "swagger": "2.0",
     "info": {
-      "description": "Conduit API",
+      "description": "Twentty API",
       "version": "1.0.0",
-      "title": "Conduit API",
+      "title": "Twentty API",
       "contact": {
         "name": "RealWorld",
         "url": "https://realworld.io"

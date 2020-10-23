@@ -75,37 +75,37 @@ router.get('/', auth.optional, function (req, res, next) {
   }).catch(next);
 });
 
-router.get('/feed', auth.required, function(req, res, next) {
+router.get('/feed', auth.required, function (req, res, next) {
   var limit = 20;
   var offset = 0;
 
-  if(typeof req.query.limit !== 'undefined'){
+  if (typeof req.query.limit !== 'undefined') {
     limit = req.query.limit;
   }
 
-  if(typeof req.query.offset !== 'undefined'){
+  if (typeof req.query.offset !== 'undefined') {
     offset = req.query.offset;
   }
 
   // query.parent = null; //not show replies
 
-  User.findById(req.payload.id).then(function(user){
+  User.findById(req.payload.id).then(function (user) {
     if (!user) { return res.sendStatus(401); }
 
     Promise.all([
-      Tweet.find({ author: {$in: user.following}})
+      Tweet.find({ author: { $in: user.following } })
         .limit(Number(limit))
         .skip(Number(offset))
         .populate('author')
         .populate('parent')
         .exec(),
-      Tweet.count({ author: {$in: user.following}})
-    ]).then(function(results){
+      Tweet.count({ author: { $in: user.following } })
+    ]).then(function (results) {
       var tweets = results[0];
       var tweetsCount = results[1];
 
       return res.json({
-        tweets: tweets.map(function(tweet){
+        tweets: tweets.map(function (tweet) {
           return tweet.toJSONFor(user);
         }),
         tweetsCount: tweetsCount
@@ -129,10 +129,10 @@ router.post('/', auth.required, function (req, res, next) {
       if (data) {
         tweet.parent = data;
 
-        return tweet.save().then(function(){
+        return tweet.save().then(function () {
           data.replies = data.replies.concat(tweet._id);
-          
-          return data.save().then(function() {
+
+          return data.save().then(function () {
             res.json({ tweet: tweet.toJSONFor(user) });
           });
         });
@@ -161,7 +161,7 @@ router.get('/:tweet', auth.optional, function (req, res, next) {
     req.tweet.populate('parent').execPopulate(),
     // req.tweet.populate('replies').execPopulate(),
     req.tweet.populate({
-      path:'replies',
+      path: 'replies',
       populate: {
         path: 'author',
         model: 'User'
@@ -182,9 +182,57 @@ router.delete('/:tweet', auth.required, function (req, res, next) {
     if (!user) { return res.sendStatus(401); }
 
     if (req.tweet.author._id.toString() === req.payload.id.toString()) {
-      return req.tweet.remove().then(function () {
-        return res.sendStatus(204);
-      });
+
+      function removeChilds(arr) {
+
+        console.log(arr);
+        console.log(arr.length);
+        arr.forEach(child => {
+          if (child instanceof Object) {
+            console.log("obj");
+            console.log(typeof child);
+          }else{
+            console.log("IDDDD");
+            console.log(typeof child);
+          }
+          // console.log("hola");
+          child.replies.length !== 0 ? removeChilds(child.replies) : console.log("se debe borrar");
+        });
+        
+
+        // for (let i = 0; i < arr.length; i++) {
+        //   arr[i].replies.length !== 0 ? removeChilds(arr[i].replies) : console.log("se debe borrar");
+        //   // console.log(arr[i]);
+        // }
+
+      }
+
+      // let removeChilds = (arr) => {
+      //   arr.map((child)=>{
+      //     child.replies !== 0 ? removeChilds() : console.log("se debe borrar");
+      //   })
+      // }
+
+      if (req.tweet.replies.length !== 0) {
+        console.log("TIENE REPLIES ===================================");
+        let childs = true;
+        let ArrReplies = req.tweet.replies;
+        // while (childs) {
+        //   ArrReplies.map((reply) => {
+
+        //     console.log(reply);
+        //   }) 
+        // }
+        // console.log(req.tweet.replies[0].replies);
+
+        removeChilds(req.tweet.replies);
+
+      } else {
+        console.log("NO TIENE REPLIES");
+      }
+      // return req.tweet.remove().then(function () {
+      //   return res.sendStatus(204);
+      // });
     } else {
       return res.sendStatus(403);
     }

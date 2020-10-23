@@ -56,7 +56,7 @@ app.use(passport.session());
 app.use(require('./routes'));
 
 //// Swagger ////
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { explorer: true  }));
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
