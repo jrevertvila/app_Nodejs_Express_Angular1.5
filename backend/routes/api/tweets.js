@@ -176,56 +176,47 @@ router.get('/:tweet', auth.optional, function (req, res, next) {
   }).catch(next);
 });
 
+let getTweetByObjID = (id) => {
+  let tweet;
+  Tweet.findOne({ _id: id }).then((data)=>{
+    tweet = data;
+    console.log(data);
+  });
+  return tweet;
+}
+
+function addToProvisional() {
+
+}
+
 //DELETE TWEET BY SLUG
 router.delete('/:tweet', auth.required, function (req, res, next) {
-  User.findById(req.payload.id).then(function (user) {
+  User.findById(req.payload.id).then( async function (user) {
     if (!user) { return res.sendStatus(401); }
 
     if (req.tweet.author._id.toString() === req.payload.id.toString()) {
 
-      function removeChilds(arr) {
-
-        console.log(arr);
-        console.log(arr.length);
-        arr.forEach(child => {
-          if (child instanceof Object) {
-            console.log("obj");
-            console.log(typeof child);
-          }else{
-            console.log("IDDDD");
-            console.log(typeof child);
-          }
-          // console.log("hola");
-          child.replies.length !== 0 ? removeChilds(child.replies) : console.log("se debe borrar");
-        });
-        
-
-        // for (let i = 0; i < arr.length; i++) {
-        //   arr[i].replies.length !== 0 ? removeChilds(arr[i].replies) : console.log("se debe borrar");
-        //   // console.log(arr[i]);
-        // }
-
-      }
-
-      // let removeChilds = (arr) => {
-      //   arr.map((child)=>{
-      //     child.replies !== 0 ? removeChilds() : console.log("se debe borrar");
-      //   })
-      // }
+      let arrToDelete = [];
+      let arrProvisional = [];
 
       if (req.tweet.replies.length !== 0) {
         console.log("TIENE REPLIES ===================================");
         let childs = true;
-        let ArrReplies = req.tweet.replies;
-        // while (childs) {
-        //   ArrReplies.map((reply) => {
+        let ArrReplies = req.tweet.replies;    
+        arrProvisional.concat(ArrReplies);
 
-        //     console.log(reply);
-        //   }) 
-        // }
-        // console.log(req.tweet.replies[0].replies);
+        for (let x = 0; x < arrProvisional.length; x++) {
 
-        removeChilds(req.tweet.replies);
+          let obj = arrProvisional[x].slug ? arrProvisional[x]._id : arrProvisional[x];
+
+          Tweet.findOne({_id : obj}).then((data) => {
+            if (data.replies) {
+              
+            }
+          })
+          
+        }
+
 
       } else {
         console.log("NO TIENE REPLIES");
