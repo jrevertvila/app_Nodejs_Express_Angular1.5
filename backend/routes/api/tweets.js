@@ -171,15 +171,6 @@ router.get('/:tweet', auth.optional, function (req, res, next) {
   }).catch(next);
 });
 
-let getTweetByObjID = (id) => {
-  let tweet;
-  Tweet.findOne({ _id: id }).then((data) => {
-    tweet = data;
-    console.log(data);
-  });
-  return tweet;
-}
-
 //DELETE TWEET BY SLUG
 router.delete('/:tweet', auth.required, function (req, res, next) {
   User.findById(req.payload.id).then(async function (user) {
@@ -188,21 +179,22 @@ router.delete('/:tweet', auth.required, function (req, res, next) {
     if (req.tweet.author._id.toString() === req.payload.id.toString()) {
       let arrDelete = [];
       arrDelete = [req.tweet._id];
+      console.log(arrDelete);
       for (let x = 0; x < arrDelete.length; x++) {
         let obj = arrDelete[x].slug ? arrDelete[x]._id : arrDelete[x];
+        console.log(obj);
         await Tweet.findOne({ _id: obj }).then((data) => {
+          console.log("replies: "+data.replies.length);
           if (data.author == req.payload.id.toString()) countTw++;
+
           if (data.replies.length !== 0) {
             arrDelete = [...arrDelete, ...data.replies];
           }
         })
       }
-
-      //BUG AL BORRAR REPLIES Y NO QUITARLO DE ARRAY REPLIES DE PARENT
-      // arrDelete.map((tweet)=> {
-
-      // })
-
+      arrDelete = arrDelete.reverse();
+      console.log(arrDelete);
+      if (req.tweet.parent != null) Tweet.findOne({ _id: req.tweet.parent._id }).then((parent) => parent.removeReply(req.tweet._id) );
 
       Tweet.remove({ _id: { $in: arrDelete } }).then((result) => {
         user.decreaseKarma(5 * (countTw == 0 ? 1 : countTw));
@@ -242,7 +234,7 @@ router.post('/:tweet/favorite', auth.required, function (req, res, next) {
 
   User.findById(req.payload.id).then(function (user) {
     if (!user) { return res.sendStatus(401); }
-
+    user.increaseKarma(5);
     return user.favorite(tweetId).then(function () {
       return req.tweet.updateFavoriteCount().then(function (tweet) {
         return res.json({ tweet: tweet.toJSONFor(user) });
@@ -257,7 +249,7 @@ router.delete('/:tweet/favorite', auth.required, function (req, res, next) {
 
   User.findById(req.payload.id).then(function (user) {
     if (!user) { return res.sendStatus(401); }
-
+    user.decreaseKarma(5);
     return user.unfavorite(tweetId).then(function () {
       return req.tweet.updateFavoriteCount().then(function (tweet) {
         return res.json({ tweet: tweet.toJSONFor(user) });
@@ -268,7 +260,7 @@ router.delete('/:tweet/favorite', auth.required, function (req, res, next) {
 
 //----- TWEET OPTIONS RETWEETS-----
 
-// ADD FAV TO TWEET
+// ADD rt TO TWEET
 router.post('/:tweet/retweet', auth.required, function (req, res, next) {
   var tweetId = req.tweet._id;
 
@@ -283,7 +275,7 @@ router.post('/:tweet/retweet', auth.required, function (req, res, next) {
   }).catch(next);
 });
 
-// DELETE FAV TO TWEET
+// DELETE rt TO TWEET
 router.delete('/:tweet/retweet', auth.required, function (req, res, next) {
   var tweetId = req.tweet._id;
 

@@ -1,3 +1,6 @@
+// import img1 from '../../../images/mountains_hills.jpg';
+// import img2 from '../../../images/night_city.jpg';
+
 class homeSliderCtrl {
     constructor(){
         "ngInject";

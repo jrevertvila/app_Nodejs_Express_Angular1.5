@@ -97,6 +97,8 @@ router.post('/users/login', function (req, res, next) {
     if (err) { return next(err); }
 
     if (user) {
+      // console.log(new Date().;
+      console.log(user.last_session);
       user.token = user.generateJWT();
       return res.json({ user: user.toAuthJSON() });
     } else {

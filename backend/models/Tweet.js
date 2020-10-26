@@ -48,6 +48,11 @@ TweetSchema.methods.updateRetweetCount = function() {
     });
 };
 
+TweetSchema.methods.removeReply = function(reply) {
+    this.replies = this.replies.filter((tweet) => { return tweet+"" != reply+"" });
+    this.save();
+};
+
 // TweetSchema.methods.reply = function(id){
 //     if(this.replies.indexOf(id) === -1){
 //       this.replies = this.replies.concat(id);

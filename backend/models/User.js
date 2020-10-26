@@ -17,6 +17,7 @@ var UserSchema = new mongoose.Schema({
   favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tweet' }],
   retweets: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tweet' }],
   following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  last_session: { type: Date, default: Date.now },
   hash: String,
   salt: String
 }, { timestamps: true });
@@ -52,7 +53,8 @@ UserSchema.methods.toAuthJSON = function () {
     token: this.generateJWT(),
     bio: this.bio,
     image: this.image,
-    type: this.type
+    type: this.type,
+    karma: this.karma
   };
 };
 

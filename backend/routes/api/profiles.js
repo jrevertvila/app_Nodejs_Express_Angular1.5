@@ -31,7 +31,7 @@ router.post('/:username/follow', auth.required, function(req, res, next){
 
   User.findById(req.payload.id).then(function(user){
     if (!user) { return res.sendStatus(401); }
-
+    user.increaseKarma(15);
     return user.follow(profileId).then(function(){
       return res.json({profile: req.profile.toProfileJSONFor(user)});
     });
@@ -43,7 +43,7 @@ router.delete('/:username/follow', auth.required, function(req, res, next){
 
   User.findById(req.payload.id).then(function(user){
     if (!user) { return res.sendStatus(401); }
-
+    user.decreaseKarma(15);
     return user.unfollow(profileId).then(function(){
       return res.json({profile: req.profile.toProfileJSONFor(user)});
     });
