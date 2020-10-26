@@ -144,12 +144,7 @@ router.post('/', auth.required, function (req, res, next) {
         });
       }
     })
-
-
-
-    // return tweet.save().then(function () {
-    //   return res.json({ tweet: tweet.toJSONFor(user) });
-    // });
+    user.increaseKarma(5);
   }).catch(next);
 });
 
@@ -189,19 +184,28 @@ let getTweetByObjID = (id) => {
 router.delete('/:tweet', auth.required, function (req, res, next) {
   User.findById(req.payload.id).then(async function (user) {
     if (!user) { return res.sendStatus(401); }
-
+    let countTw = 0;
     if (req.tweet.author._id.toString() === req.payload.id.toString()) {
       let arrDelete = [];
       arrDelete = [req.tweet._id];
       for (let x = 0; x < arrDelete.length; x++) {
         let obj = arrDelete[x].slug ? arrDelete[x]._id : arrDelete[x];
         await Tweet.findOne({ _id: obj }).then((data) => {
+          if (data.author == req.payload.id.toString()) countTw++;
           if (data.replies.length !== 0) {
             arrDelete = [...arrDelete, ...data.replies];
           }
         })
       }
+
+      //BUG AL BORRAR REPLIES Y NO QUITARLO DE ARRAY REPLIES DE PARENT
+      // arrDelete.map((tweet)=> {
+
+      // })
+
+
       Tweet.remove({ _id: { $in: arrDelete } }).then((result) => {
+        user.decreaseKarma(5 * (countTw == 0 ? 1 : countTw));
         return res.status(200).send('Deleted correctly');
       }).catch(() => {
         return res.sendStatus(503)
