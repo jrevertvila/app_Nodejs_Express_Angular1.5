@@ -136,5 +136,10 @@ UserSchema.methods.decreaseKarma = function (qty) {
   return this.save();
 };
 
+//Update last_session
+UserSchema.methods.updateSession = function () {
+  this.last_session = Date.now();
+  return this.save();
+};
 
 mongoose.model('User', UserSchema);

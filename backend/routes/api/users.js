@@ -8,7 +8,12 @@ var Tweet = mongoose.model('Tweet');
 router.get('/user', auth.required, function (req, res, next) {
   User.findById(req.payload.id).then(function (user) {
     if (!user) { return res.sendStatus(401); }
-
+    let diff = new Date().getTime() - new Date(user.last_session).getTime();
+    var hourDiff = diff / 3600 / 1000;
+    if (hourDiff >= 24) {
+      user.updateSession();
+      user.increaseKarma(20);
+    }
     return res.json({ user: user.toAuthJSON() });
   }).catch(next);
 });
@@ -97,8 +102,6 @@ router.post('/users/login', function (req, res, next) {
     if (err) { return next(err); }
 
     if (user) {
-      // console.log(new Date().;
-      console.log(user.last_session);
       user.token = user.generateJWT();
       return res.json({ user: user.toAuthJSON() });
     } else {
