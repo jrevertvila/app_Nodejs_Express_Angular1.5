@@ -9,12 +9,14 @@ router.get('/user', auth.required, function (req, res, next) {
   User.findById(req.payload.id).then(function (user) {
     if (!user) { return res.sendStatus(401); }
     let diff = new Date().getTime() - new Date(user.last_session).getTime();
-    var hourDiff = diff / 3600 / 1000;
-    if (hourDiff >= 24) {
+    let hourDiff = diff / 3600 / 1000;
+    let notif = null;
+    if (hourDiff >= 10) {
       user.updateSession();
       user.increaseKarma(20);
+      notif = "Bonus de inicio de sesión diario! +20 karma"
     }
-    return res.json({ user: user.toAuthJSON() });
+    return res.json({ user: user.toAuthJSON(), notification : notif });
   }).catch(next);
 });
 

@@ -79,6 +79,7 @@ export default class User {
         }
       }).then(
         (res) => {
+          console.log(res);
           this.current = res.data.user;
           deferred.resolve(true);
         },
