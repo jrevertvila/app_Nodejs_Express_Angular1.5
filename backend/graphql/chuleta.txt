@@ -1,0 +1,25 @@
+GET BRAND BY SLUG
+
+{
+  brand(slug:"adidas"){
+    id
+    slug
+    name
+    description
+    web
+  }
+}
+
+
+
+GET ALL BRANDS
+
+{
+  brands {
+    id
+    slug
+    name
+    description
+    web
+  }
+}
