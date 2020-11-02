@@ -5,6 +5,9 @@ const typeDefs = gql`
         shoes(slug: String!): Shoes
         shoeses: [Shoes]
     }
+    extend type Mutation {
+        createShoes(input: ShoesInput): Shoes
+    }
     type Shoes {
         id: ID!
         slug: String!
@@ -14,6 +17,13 @@ const typeDefs = gql`
         sizes: [Int]
         colors: [String]
         images: [String]
+    }
+    input ShoesInput {
+        name: String!
+        description: String
+        brand: String
+        sizes: [Int]
+        colors: [String]
     }
 `;
 

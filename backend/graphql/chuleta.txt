@@ -23,3 +23,57 @@ GET ALL BRANDS
     web
   }
 }
+
+-----------------------Insert ONE SHOES
+mutation createShoes($input: ShoesInput) {
+  createShoes(input: $input) {
+    id
+    slug
+    name
+    brand{
+      name
+    }
+    sizes
+    colors
+    images
+  }
+}
+
+---QUERY VARIABLES
+{
+  "input": {
+    "name": "Adidas Streetcheck",
+    "description": "Zapatillas adidas basket",
+  	"brand": "",
+  	"sizes": [40,41,42,43,44,45],
+  	"colors": ["White","Black","Blue"]
+  }
+}
+===============================
+
+
+Insert Brand
+
+mutation createShoes($input: ShoesInput) {
+  createShoes(input: $input) {
+    id
+    slug
+    name
+    brand{
+      name
+    }
+    sizes
+    colors
+    images
+  }
+}
+-------query variables-------
+{
+  "input": {
+    "name": "Adidas Streetcheck",
+    "description": "Zapatillas adidas basket",
+  	"brand": "5fa0700f32c858ee426afed2",
+  	"sizes": [40,41,42,43,44,45],
+  	"colors": ["White","Black","Blue"]
+  }
+}
