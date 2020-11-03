@@ -1,8 +1,9 @@
 class MerchCtrl {
-    // constructor(releases, User, $sce, $rootScope) { when add jwt login
-    constructor( $sce, $rootScope) {
+    constructor( merch, brands, $sce, $rootScope) {
         'ngInject';
-
+        this.allMerch = [];
+        this.brands = brands['brands'];
+        for (let type in merch) merch[type].map((x) => this.allMerch.push(x));
         $rootScope.setPageTitle("Merchandising");
     }  
 }

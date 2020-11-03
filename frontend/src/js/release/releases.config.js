@@ -18,7 +18,7 @@ function ReleasesConfig($stateProvider) {
     })
 
     .state('app.release', {
-      url: '/release/:slug',
+      url: '/releases/:slug',
       controller: 'ReleaseCtrl',
       controllerAs: '$ctrl',
       templateUrl: 'release/release.html',

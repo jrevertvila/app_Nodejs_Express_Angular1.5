@@ -1,7 +1,7 @@
 function MerchConfig($stateProvider) {
-    'ngInject';
-  
-    $stateProvider
+  'ngInject';
+
+  $stateProvider
     .state('app.merch', {
       url: '/merch',
       controller: 'MerchCtrl',
@@ -9,16 +9,36 @@ function MerchConfig($stateProvider) {
       templateUrl: 'merch/MainPage.html',
       title: 'Merchandising',
       resolve: {
-        // releases: function(Releases) {
-        //   return Releases.getReleases().then(
-        //     (releases) => releases,
-        //   )
-        // }
+        merch: function (Merch) {
+          return Merch.getAll().then(
+            (merch) => merch,
+          )
+        },
+        brands: function (Brand) {
+          return Brand.getAll().then(
+            (brands) => brands,
+          )
+        }
+      }
+    })
+
+    .state('app.item', {
+      url: '/merch/:type/:slug',
+      controller: 'ItemCtrl',
+      controllerAs: '$ctrl',
+      templateUrl: 'merch/item.html',
+      title: 'Item',
+      resolve: {
+        item: function (Merch, $stateParams) {
+          return Merch.get({ data: $stateParams}).then(
+            (merch) => merch,
+          )
+        }
+
       }
     });
 
-  
-  };
-  
-  export default MerchConfig;
-  
+
+};
+
+export default MerchConfig;

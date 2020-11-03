@@ -40,14 +40,10 @@ if(isProduction){
   mongoose.set('debug', true);
 }
 require('./models/User');
-require('./models/Article');
-require('./models/Tweet');
-require('./models/Release');
-require('./models/Comment');
 require('./models/merch/Brand');
 require('./models/merch/Shoes');
 require('./models/merch/Sweatshirt');
-require('./config/passport');
+// require('./config/passport');
 
 app.use(passport.initialize());
 app.use(passport.session());

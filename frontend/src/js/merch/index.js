@@ -13,6 +13,7 @@ merchModule.config(MerchConfig);
 import MerchCtrl from './merch.controller';
 merchModule.controller('MerchCtrl', MerchCtrl);
 
-
+import ItemCtrl from './item.controller';
+merchModule.controller('ItemCtrl', ItemCtrl);
 
 export default merchModule;

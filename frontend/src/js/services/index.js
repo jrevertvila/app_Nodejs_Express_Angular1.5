@@ -36,5 +36,9 @@ servicesModule.service('Toastr', ToastrService);
 import MerchService from './merch.service';
 servicesModule.service('Merch', MerchService);
 
+import BrandService from './brand.service';
+servicesModule.service('Brand', BrandService);
+
+
 
 export default servicesModule;
