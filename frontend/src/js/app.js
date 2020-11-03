@@ -25,6 +25,7 @@ import './editor';
 import './editor_tweets';
 import './editor_releases';
 import './merch';
+import './editor_merch';
 
 
 
@@ -47,6 +48,7 @@ const requires = [
   'app.editorTweets',
   'app.editorReleases',
   'app.merch',
+  'app.editorMerch',
   toastr
 ];
 

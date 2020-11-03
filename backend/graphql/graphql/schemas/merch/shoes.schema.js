@@ -24,6 +24,7 @@ const typeDefs = gql`
         brand: String
         sizes: [Int]
         colors: [String]
+        images: [String]
     }
 `;
 

@@ -29,7 +29,13 @@ function MerchConfig($stateProvider) {
       templateUrl: 'merch/item.html',
       title: 'Item',
       resolve: {
-        item: function (Merch, $stateParams) {
+        item: function (Merch, Brand, $stateParams) {
+          data = {
+            "name": "Fila",
+            "description": "Marca de articulos y ropa deportiva",
+            "web": "www.fila.com"
+          }
+          console.log(Brand.createBrand(data));
           return Merch.get({ data: $stateParams}).then(
             (merch) => merch,
           )
