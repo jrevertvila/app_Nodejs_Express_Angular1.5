@@ -67,4 +67,25 @@ export default class Merch {
         return this._GQL.get(query);
     }
 
+    createItem(type,input) {
+      let query = `
+      mutation create${type}($input: ${type}Input){
+          create${type}(input: $input){
+              id
+              slug
+              name
+              description
+              brand
+              sizes
+              colors
+              images
+          }
+      }
+    `;
+      let variables = {
+          "input": input
+      }
+      return this._GQL.post(query, variables);
+  }
+
 }

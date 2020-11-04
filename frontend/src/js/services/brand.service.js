@@ -24,6 +24,7 @@ export default class Brand {
     }
 
     createBrand(input) {
+        console.log(input);
         let query = `
         mutation createBrand($input: BrandInput){
             createBrand(input: $input){
@@ -35,11 +36,15 @@ export default class Brand {
             }
         }
       `;
-      let variables = {
+        let variables = {
+            "input": input
+        }
+        return this._GQL.post(query, variables);
+    }
 
-        "input": input
-      }
-      return this._GQL.post(query,variables);
+    deleteBrand(slug) {
+        let query = `mutation { deleteBrand(slug:"${slug}") }`;
+        return this._GQL.post(query);
     }
 
 }

@@ -18,7 +18,11 @@ const resolvers = {
           // no .exec();
           brand.save();
           return brand;
-      }
+      },
+      deleteBrand: (root, {slug}) => {
+        Brand.remove({slug: slug});
+        return "deleted";
+    }
   },
 };
 module.exports = resolvers;

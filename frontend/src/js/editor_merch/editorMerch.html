@@ -1,15 +1,82 @@
 <style>
+    .wrapper-editor-merch {
+        width: 100%;
+        padding: 20px 200px 0px 200px;
+        display: flex;
+        justify-content: center;
+    }
 
+    .container-editor-merch {
+        width: 100%;
+        max-width: 1000px;
+    }
+
+    .brandList {
+        width: 100%;
+        min-height: 250px;
+        max-height: 250px;
+        border: 1px solid black;
+        padding: 5px;
+        overflow-y: scroll;
+    }
+
+    .creatorBrand {
+        width: 100%;
+    }
+
+    .brandItem {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        margin: 5px;
+        padding: 5px 10px 5px 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .brandItem:hover {
+        background-color: rgb(230, 230, 230);
+    }
+
+    .brandItem__data {}
 </style>
+<div class="wrapper-editor-merch">
+    <div class="container-editor-merch">
 
-<div class="container-editor-merch">
-    <h1>Create new product</h1>
-    
+        <section class="brandSection">
+            <h2>Brands Panel</h2>
+            <div class="brandList">
+                <div class="brandItem" ng-repeat="brand in $ctrl.allBrands">
+                    <div class="brandItem__data">
+                        {{$index + 1}} - {{brand.name}}
+                    </div>
+                    <div class="brandItem__options">
+                        <button>Edit</button>
+                        <button ng-click="$ctrl.deleteBrand(brand.slug)">Remove</button>
+                    </div>
 
-    <!-- <div class="options_release">
-        <button class="btn-submit-release" type="button" ng-click="$ctrl.submit()" ng-hide="$ctrl.isEdit">Create Release</button>
-        <button class="btn-submit-release" type="button" ng-click="$ctrl.submit()" ng-show="$ctrl.isEdit">Edit Release</button>
-    </div> -->
+                </div>
+            </div>
+            <br>
+            <div class="creatorBrand">
+                <!-- <h2>Create brand</h2> -->
+                <label for="brandName">Name:</label><input type="text" name="brandName" id="brandName"
+                    ng-model="$ctrl.brand.name">
+                <label for="brandDesc">Description:</label><input type="text" name="brandDesc" id="brandDesc"
+                    ng-model="$ctrl.brand.description">
+                <label for="brandWeb">Website:</label><input type="text" name="brandWeb" id="brandWeb"
+                    ng-model="$ctrl.brand.web">
+                <button class="btn-submit-brand" type="button" ng-click="$ctrl.submitBrand()">Create Brand</button>
+            </div>
+        </section>
+
+        <br><br>
+
+        <h1>Create new product</h1>
+        
 
 
+
+    </div>
 </div>

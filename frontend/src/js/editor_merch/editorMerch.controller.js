@@ -1,26 +1,54 @@
 class EditorMerchCtrl {
-  constructor($state, User, Merch) {
+  constructor($state, User, Merch, item, Brand, brands) {
     'ngInject';
-    // console.log(item);
-    // this._Merch = Merch;
-    // this._$state = $state;
-    // this.currentUser = User.current;
-    // console.log(this.currentUser);
+
+    this._Merch = Merch;
+    this._Brand = Brand;
+    this._$state = $state;
+    this.currentUser = User.current;
+    this.brand = {
+      name: '',
+      description: '',
+      web: ''
+    };
+    console.log(brands['brands']);
+    this.allBrands = brands['brands'];
+    // this.$onInit = function () {
+    //   this.allBrands = this._Brand.getAll().then((data) => {
+    //     return data;
+    //   });
+    //   // console.log(this.allBrands);
+    // };
 
 
-    // if (!release) {
-    //   this.release = {
-    //     title: '',
-    //     description: '',
-    //     body: '',
-    //     tagList: [],
-    //     version: ''
-    //   }
-    // } else {
-    //   this.isEdit = true;
-    //   this.release = release;
-    // }
+    if (!item) {
+      this.item = {
+        title: '',
+        description: '',
+        body: '',
+        tagList: [],
+        version: ''
+      }
+    } else {
+      this.isEdit = true;
+      this.item = item;
+    }
+  }
+  submitBrand() {
+    console.log(this.brand);
+    this._Brand.createBrand(this.brand).then((result) => {
+      console.log("ADDED");
+      console.log(result);
+      // this._$state.go('app.merch');
+    })
+  }
 
+  deleteBrand(slug) {
+    console.log(slug);
+    this._Brand.deleteBrand(slug).then((result) => {
+      console.log(result);
+      // location.reload();
+    })
   }
 
   // submit() {
