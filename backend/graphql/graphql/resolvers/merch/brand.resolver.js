@@ -20,8 +20,10 @@ const resolvers = {
           return brand;
       },
       deleteBrand: (root, {slug}) => {
-        Brand.remove({slug: slug});
-        return "deleted";
+        console.log(slug);
+        const status = Boolean(slug)
+        Brand.remove({"slug":slug}).exec();
+        return status;
     }
   },
 };
