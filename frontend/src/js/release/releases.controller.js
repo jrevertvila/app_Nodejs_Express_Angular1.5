@@ -6,6 +6,7 @@ class ReleasesCtrl {
         this.releases = releases;
         $scope.releases = this.releases;
         this.tags = tags;
+        console.log(this.tags);
 
         this.$onInit = function () {
             if (!$stateParams.filter) {

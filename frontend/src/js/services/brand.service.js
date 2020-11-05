@@ -42,8 +42,21 @@ export default class Brand {
     }
 
     deleteBrand(slug) {
-        let query = `mutation { deleteBrand(slug:"${slug}") }`;
-        return this._GQL.post(query);
+        let query = `
+        mutation deleteBrand($input:deleteBrandInput){
+            deleteBrand(input:$input){
+              ok
+            }
+          }
+          `
+          console.log(query);
+        let variables = {
+            "input": {
+                "slug":slug
+            }
+        }
+        console.log(variables);
+        return this._GQL.post(query, variables);
     }
 
 }

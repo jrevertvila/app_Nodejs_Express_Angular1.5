@@ -7,7 +7,7 @@ const typeDefs = gql`
     }
     extend type Mutation {
         createBrand(input: BrandInput): Brand
-        deleteBrand(slug: String) : String
+        deleteBrand(input: deleteBrandInput) : DeleteResponse
     }
     type Brand {
         id: ID!
@@ -16,9 +16,9 @@ const typeDefs = gql`
         description: String
         web: String
     }
-    
+
     type DeleteResponse {
-        ok: String
+        ok: Boolean!
     }
 
     input deleteBrandInput {

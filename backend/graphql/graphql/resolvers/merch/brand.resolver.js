@@ -14,16 +14,13 @@ const resolvers = {
     Mutation: {
       createBrand: (root, {input}) => {
           const brand = new Brand(input);
-  
-          // no .exec();
           brand.save();
           return brand;
       },
-      deleteBrand: (root, {slug}) => {
-        console.log(slug);
-        const status = Boolean(slug)
-        Brand.remove({"slug":slug}).exec();
-        return status;
+      deleteBrand: (root, {input}) => {
+        const ok = Boolean(input.slug)
+        Brand.remove({"slug":input.slug}).exec();
+        return {ok:ok};
     }
   },
 };
