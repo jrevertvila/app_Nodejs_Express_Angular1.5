@@ -1,0 +1,20 @@
+.tweet-actions {
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mgClickToggled {
+    color: rgb(207, 13, 13);
+    cursor: pointer;
+}
+
+.mgClickToggled:hover {
+    color: rgb(255, 149, 149);
+    cursor: pointer;
+}
+
+.mgClick:hover {
+    color: rgb(255, 149, 149);
+    cursor: pointer;
+}
