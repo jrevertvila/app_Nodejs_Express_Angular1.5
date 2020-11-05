@@ -11,9 +11,9 @@ class AuthCtrl {
   }
 
   submitForm() {
+    
     this.isSubmitting = true;
-    console.log("bonica");
-    this._User.attemptAuth(this.authType, this.formData).then(
+    this._User.attemptAuth(this.authType, this.authForm).then(
       (res) => {
         this._toastr.showToastr("success", "Loggeado correctamente");
         setTimeout(() => {
@@ -26,6 +26,7 @@ class AuthCtrl {
         this.errors = err.data.errors;
       }
     )
+
   }
 }
 
