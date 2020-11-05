@@ -13,12 +13,6 @@ class EditorMerchCtrl {
     };
     console.log(brands['brands']);
     this.allBrands = brands['brands'];
-    // this.$onInit = function () {
-    //   this.allBrands = this._Brand.getAll().then((data) => {
-    //     return data;
-    //   });
-    //   // console.log(this.allBrands);
-    // };
 
 
     if (!item) {
@@ -36,11 +30,16 @@ class EditorMerchCtrl {
   }
   submitBrand() {
     console.log(this.brand);
-    this._Brand.createBrand(this.brand).then((result) => {
-      console.log("ADDED");
-      console.log(result);
-      // this._$state.go('app.merch');
-    })
+    if (this.brand.name != '' && this.brand.name != undefined){
+      this._Brand.createBrand(this.brand).then((result) => {
+        console.log("ADDED");
+        console.log(result);
+        // this._$state.go('app.merch');
+      })
+    }else{
+      console.log("ERROR");
+    }
+        
   }
 
   deleteBrand(slug) {

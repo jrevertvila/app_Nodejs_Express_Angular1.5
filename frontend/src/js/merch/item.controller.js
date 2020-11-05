@@ -5,7 +5,6 @@ class ItemCtrl {
 
         this.item = Object.values(item)[0]; //Get first property of object
         
-        console.log(this.item);
         // this.currentUser = User.current;
         $rootScope.setPageTitle(this.item.name);
     }  

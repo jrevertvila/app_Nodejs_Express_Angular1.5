@@ -50,6 +50,9 @@ componentsModule.component('releasesDetails', ReleasesDetails);
 import ReleasesList from './releases-helpers/releases-list.component';
 componentsModule.component('releasesList', ReleasesList);
 
+import ReleasePreview from './releases-helpers/release-preview.component';
+componentsModule.component('releasePreview', ReleasePreview);
+
 import ListPagination from './tweets-helpers/list-pagination.component';
 componentsModule.component('listPagination', ListPagination);
 

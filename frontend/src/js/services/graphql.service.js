@@ -72,7 +72,6 @@ export default class GraphQL {
         if (!this._clients.has(server)) {
             this._clients.set(server, this.createClient(server));
         }
-        console.log(query);
 
         this._clients.get(server).mutate({
             mutation: gql(query),

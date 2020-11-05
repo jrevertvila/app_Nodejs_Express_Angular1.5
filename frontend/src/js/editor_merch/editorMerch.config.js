@@ -9,7 +9,7 @@ function EditorMerchConfig($stateProvider) {
       templateUrl: 'editor_merch/editorMerch.html',
       title: 'Editor Merch',
       resolve:{
-        auth: function(User) {
+        auth: function(User) { //Cannot enter if u aren't logged
           return User.ensureAuthIs(true);
         },
         item: function($stateParams) {

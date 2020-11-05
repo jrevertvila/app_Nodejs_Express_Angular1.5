@@ -29,8 +29,11 @@ router.get('/', auth.optional, function (req, res, next) {
 
     if(typeof req.query.limit !== 'undefined'){
         limit = req.query.limit;
-      }
-    
+    }
+
+    if(typeof req.query.offset !== 'undefined'){
+        offset = req.query.offset;
+    }
 
     Promise.all([
         req.query.author ? User.findOne({ username: req.query.author }) : null, //comprueba que exista el author

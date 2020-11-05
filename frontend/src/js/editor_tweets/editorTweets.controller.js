@@ -7,8 +7,7 @@ class EditorTweetsCtrl {
       this._$scope = $scope;
       // console.log(User.current)
       this.currentUser = User.current;
-      console.log(this.currentUser);
-      console.log(tweet);
+
 
       // $scope.$watch('User.current', (newUser) => {
       //   this.currentUser = newUser;

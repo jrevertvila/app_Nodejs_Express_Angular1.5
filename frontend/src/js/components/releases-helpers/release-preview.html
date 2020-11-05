@@ -1,0 +1,11 @@
+<article class="preview-release" ui-sref="app.release({slug:'{{$ctrl.release.slug}}'})">
+    <h1>{{$ctrl.release.title}}</h1>
+    <p>{{$ctrl.release.description}}</p>
+    <div class="footer-preview-release">
+        <div>
+            <span class="release_version">Version: {{$ctrl.release.version}}</span>
+            <span> Writed by: {{$ctrl.release.author.username}}</span>
+        </div>
+        <span>{{$ctrl.release.updatedAt  | date: 'longDate'}}</span>
+    </div>
+</article>

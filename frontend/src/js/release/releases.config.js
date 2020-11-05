@@ -3,7 +3,7 @@ function ReleasesConfig($stateProvider) {
   
     $stateProvider
     .state('app.releases', {
-      url: '/releases',
+      url: '/releases/:filter',
       controller: 'ReleasesCtrl',
       controllerAs: '$ctrl',
       templateUrl: 'release/releases.html',
@@ -13,12 +13,18 @@ function ReleasesConfig($stateProvider) {
           return Releases.getReleases().then(
             (releases) => releases,
           )
+        },
+        tags: function(Tags) {
+          return Tags.getAll().then(
+            (tags) => tags,
+          )
         }
+
       }
     })
 
     .state('app.release', {
-      url: '/releases/:slug',
+      url: '/release/:slug',
       controller: 'ReleaseCtrl',
       controllerAs: '$ctrl',
       templateUrl: 'release/release.html',

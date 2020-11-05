@@ -14,7 +14,6 @@ export default class User {
 
 
   attemptAuth(type, credentials) {
-    console.log(type);
     let route = '';
     
     if (type == 'sociallogin'){
@@ -79,7 +78,6 @@ export default class User {
         }
       }).then(
         (res) => {
-          console.log(res);
           this.current = res.data.user;
           deferred.resolve(true);
         },

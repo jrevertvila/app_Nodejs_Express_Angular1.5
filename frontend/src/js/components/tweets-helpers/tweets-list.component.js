@@ -1,9 +1,8 @@
 class TweetsListCtrl {
-    constructor($scope, $state, User, Tweets) {
+    constructor($scope, $state, Tweets) { //User borrado (probar)
         "ngInject";
         this._$scope = $scope;
         this._Tweets = Tweets;
-        this._User = User;
 
         this.$onInit = () => {
             this.setListTo(this.listConfig);

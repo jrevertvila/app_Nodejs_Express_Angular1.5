@@ -24,7 +24,6 @@ export default class Brand {
     }
 
     createBrand(input) {
-        console.log(input);
         let query = `
         mutation createBrand($input: BrandInput){
             createBrand(input: $input){

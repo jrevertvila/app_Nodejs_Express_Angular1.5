@@ -1,17 +1,10 @@
-<div ng-repeat="release in $ctrl.releases">
-
-    <article class="preview-release" ui-sref="app.release({slug:'{{::release.slug}}'})">
-        <h1>{{::release.title}}</h1>
-        <p>{{::release.description}}</p>
-        <div class="footer-preview-release">
-            <div>
-                <span class="release_version">Version: {{::release.version}}</span>
-                <span> Writed by: {{::release.author.username}}</span>
-            </div>
-            <span>{{::release.updatedAt  | date: 'longDate'}}</span>
-        </div>
-    </article>
-    
+<div ng-repeat="release in $ctrl.list">
+    <release-preview release="release"></release-preview>
     <hr>
-    
 </div>
+
+<list-pagination
+    total-pages="$ctrl.listConfig.totalPages"
+    current-page="$ctrl.listConfig.currentPage"
+    ng-hide="$ctrl.listConfig.totalPages <= 1">
+</list-pagination>
