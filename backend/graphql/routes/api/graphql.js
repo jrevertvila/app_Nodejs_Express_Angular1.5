@@ -16,6 +16,7 @@ const SERVERAUTH = new ApolloServer({
     context: async ({ req }) => {
         let user = null;
         if (req.payload) {
+            console.log(req.payload);
             user = await User.findById(req.payload.id);
         }
         return { user, AuthenticationError };
