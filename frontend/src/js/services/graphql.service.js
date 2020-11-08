@@ -67,10 +67,10 @@ export default class GraphQL {
         return deferred.promise;
     }
 
-    post(query,variables = '', server = this._AppConstants.gql + '/graphql/') {
+    post(query,variables = '', server = this._AppConstants.gql + '/graphqlauth/') {
         let deferred = this._$q.defer();
         if (!this._clients.has(server)) {
-            this._clients.set(server, this.createClient(server));
+            this._clients.set(server, this.createAuthClient(server));
         }
 
         this._clients.get(server).mutate({

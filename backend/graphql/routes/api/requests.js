@@ -1,18 +1,50 @@
 const fetch = require('node-fetch');
-const restUrl = 'http://localhost:3000/api/';
+const restUrl = 'http://localhost:3000/api';
 
 
-exports.getUser = (slug) => {
-    console.log(slug);
-    // console.log(req);
-    fetch(restUrl + 'user', {
-        method: 'PUT', // or 'PUT'
-        body: JSON.stringify({ slug: slug }), // data can be `string` or {object}!
+exports.checkUser = async (token) => {
+    // console.log("TOKEN");
+    // console.log(token);
+
+    //https://stackoverflow.com/questions/30203044/using-an-authorization-header-with-fetch-in-react-native
+
+    return await fetch(restUrl + '/user', {
+        method: 'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Authorization': '' + token,
+            'Content-Type': 'application/x-www-form-urlencoded'
         }
     }).then(res => res.json())
         .catch(error => console.error('Error:', error))
-        .then(response => console.log('Success:', response));
+        .then(response => { return response });
+
+}
+
+exports.wishlistToUser = (data,token) => {
+    // console.log(data);
+    const body = {
+        user : {
+            data
+        },
+        
+    };
+    fetch(restUrl + '/user', {
+        method: 'PUT',
+        headers: {
+            'Authorization': '' + token,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({user : {wishlist:data}}),
+    })
+        .then((response) => response.json())
+
+        .then((data) => {
+            console.log('Success:', data);
+            console.log(data);
+        })
+
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 
 }

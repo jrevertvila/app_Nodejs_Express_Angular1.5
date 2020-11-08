@@ -12,12 +12,14 @@ const Query = gql`
     }
 `;
 
-var sweatshirt = require('./merch/sweatshirt.schema.js');
-var shoes = require('./merch/shoes.schema.js');
-var brand = require('./merch/brand.schema.js');
+const merch = require('./merch/merch.schema.js');
+const sweatshirt = require('./merch/sweatshirt.schema.js');
+const shoes = require('./merch/shoes.schema.js');
+const brand = require('./merch/brand.schema.js');
 
 const typeDefs = [
     Query,
+    merch,
     sweatshirt,
     shoes,
     brand

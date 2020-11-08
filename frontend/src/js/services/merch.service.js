@@ -1,23 +1,23 @@
 export default class Merch {
-    constructor(AppConstants, $http, $q, GraphQLClient) {
-        'ngInject';
+  constructor(AppConstants, $http, $q, GraphQLClient) {
+    'ngInject';
 
-        this._AppConstants = AppConstants;
-        this._$http = $http;
-        this._$q = $q;
-        this._GQL = GraphQLClient;
-    }
+    this._AppConstants = AppConstants;
+    this._$http = $http;
+    this._$q = $q;
+    this._GQL = GraphQLClient;
+  }
 
-    get(res) {
-      // let deferred = this._$q.defer();
-      // if (!res.data.slug.replace(" ", "")) {
-      //   deferred.reject("Item slug is empty");
-      //   return deferred.promise;
-      // }
-      // console.log(res.data.type);
-      // let query = "query getItem{"+res.data.type.toLowerCase()+"(slug:\"" + res.data.slug.toLowerCase() + "\"){id slug name brand {name} sizes colors}}";
-      
-      let query = `
+  get(res) {
+    // let deferred = this._$q.defer();
+    // if (!res.data.slug.replace(" ", "")) {
+    //   deferred.reject("Item slug is empty");
+    //   return deferred.promise;
+    // }
+    // console.log(res.data.type);
+    // let query = "query getItem{"+res.data.type.toLowerCase()+"(slug:\"" + res.data.slug.toLowerCase() + "\"){id slug name brand {name} sizes colors}}";
+
+    let query = `
         query shoes{
           ${res.data.type}(slug:"${res.data.slug.toLowerCase()}"){
             id
@@ -31,14 +31,14 @@ export default class Merch {
           }
         }
       `
-      // console.log(query);
-      // let query = 'query getItem{shoes(slug:"adidas-streetcheck-y12gw5"){id slug name brand {name} sizes colors}}';
-      // console.log(this._GQL.get(query));
-      return this._GQL.get(query);
-    }
+    // console.log(query);
+    // let query = 'query getItem{shoes(slug:"adidas-streetcheck-y12gw5"){id slug name brand {name} sizes colors}}';
+    // console.log(this._GQL.get(query));
+    return this._GQL.get(query);
+  }
 
-    getAll() {
-        let query = `
+  getAll() {
+    let query = `
         query getMerch{
             sweatshirts{
                 id
@@ -64,11 +64,11 @@ export default class Merch {
               }
           }
       `;
-        return this._GQL.get(query);
-    }
+    return this._GQL.get(query);
+  }
 
-    createItem(type,input) {
-      let query = `
+  createItem(type, input) {
+    let query = `
       mutation create${type}($input: ${type}Input){
           create${type}(input: $input){
               id
@@ -82,10 +82,26 @@ export default class Merch {
           }
       }
     `;
-      let variables = {
-          "input": input
+    let variables = {
+      "input": input
+    }
+    return this._GQL.post(query, variables);
+  }
+
+  addToWishlist(input) {
+    let query = `
+      mutation addToWishlist($input: WishlistInput){
+        addToWishlist(input: $input){
+              ok
+          }
       }
-      return this._GQL.post(query, variables);
+    `;
+    let variables = {
+      "input": {
+        "id":input
+      }
+    }
+    return this._GQL.post(query, variables);
   }
 
 }

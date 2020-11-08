@@ -8,8 +8,7 @@ const resolvers = {
   Query: {
     shoes: (root, { slug }, req) => {
       // console.log(req.payload);
-      console.log(req.payload);
-      request.getUser("hola");
+      // request.getUser("hola",req);
 
       return Shoes.findOne({ slug: slug }).exec();
 

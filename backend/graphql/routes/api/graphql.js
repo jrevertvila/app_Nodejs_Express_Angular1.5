@@ -1,9 +1,10 @@
-const {ApolloServer} = require('apollo-server-express');
-const {AuthenticationError} = require('apollo-server-express');
+const { ApolloServer } = require('apollo-server-express');
+const { AuthenticationError } = require('apollo-server-express');
 const typeDefs = require('../../graphql/schemas/schema');
 const resolvers = require('../../graphql/resolvers/resolver');
+const request = require('./requests.js');
 const mongoose = require('mongoose');
-const User = mongoose.model('User');
+// const User = mongoose.model('User');
 
 const SERVER = new ApolloServer({
     typeDefs,
@@ -13,13 +14,13 @@ const SERVER = new ApolloServer({
 const SERVERAUTH = new ApolloServer({
     typeDefs,
     resolvers,
-    context: async ({ req }) => {
+    context: async ({ req }) => { // Asks to Rest BE if Token is OK and Returns User
         let user = null;
         if (req.payload) {
-            console.log(req.payload);
-            user = await User.findById(req.payload.id);
+            //GET USER FROM ENDPOINT IN REST  (FOR REMOVE USER'S SCHEMA IN GRAPHQL)
+            await request.checkUser(req.headers.authorization).then((res) => user = res);
         }
-        return { user, AuthenticationError };
+        return { user, req, AuthenticationError };
     },
 });
 
@@ -28,5 +29,4 @@ const SERVERS = {
     graphqlauth: SERVERAUTH
 };
 
-// export default SERVERS;
 module.exports = SERVERS;

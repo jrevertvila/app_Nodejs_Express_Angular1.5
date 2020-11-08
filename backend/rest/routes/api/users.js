@@ -6,9 +6,10 @@ var auth = require('../auth');
 var Tweet = mongoose.model('Tweet');
 
 router.get('/user', auth.required, function (req, res, next) {
+  console.log("ENTRA EN GET /USER");
   User.findById(req.payload.id).then(function (user) {
     if (!user) { return res.sendStatus(401); }
-    let diff = new Date().getTime() - new Date(user.last_session).getTime();
+    let diff = new Date().getTime() - new Date(user.last_session).getTime(); //LET BONUS KARMA EVERYDAY. +20 KARMA
     let hourDiff = diff / 3600 / 1000;
     let notif = null;
     if (hourDiff >= 10) {
@@ -25,6 +26,7 @@ router.put('/user', auth.required, function (req, res, next) {
   User.findById(req.payload.id).then(function (user) {
     if (!user) { return res.sendStatus(401); }
 
+    console.log(req.body);
     // only update fields that were actually passed...
     if (typeof req.body.user.username !== 'undefined') {
       user.username = req.body.user.username;
@@ -41,7 +43,14 @@ router.put('/user', auth.required, function (req, res, next) {
     if (typeof req.body.user.password !== 'undefined') {
       user.setPassword(req.body.user.password);
     }
-
+    if (typeof req.body.user.wishlist !== 'undefined') {
+      if (!user.wishlist.includes(req.body.user.wishlist)){
+        user.wishlist = user.wishlist.concat(req.body.user.wishlist);
+      }      
+    }
+    if (typeof req.body.user.wishlist_split !== 'undefined') {
+      user.wishlist = user.wishlist.filter(item => item != req.body.user.wishlist_split);   
+    }
     return user.save().then(function () {
       return res.json({ user: user.toAuthJSON() });
     });

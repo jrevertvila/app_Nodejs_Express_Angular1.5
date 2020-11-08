@@ -8,6 +8,7 @@ const typeDefs = gql`
     extend type Mutation {
         createShoes(input: ShoesInput): Shoes
     }
+
     type Shoes {
         id: ID!
         slug: String!
