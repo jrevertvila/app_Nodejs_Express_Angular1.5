@@ -19,6 +19,7 @@
   "dependencies": {
     "apollo-server": "^2.9.4",
     "apollo-server-express": "^2.9.4",
+    "axios": "^0.21.0",
     "body-parser": "1.15.0",
     "cors": "2.7.1",
     "ejs": "2.4.1",

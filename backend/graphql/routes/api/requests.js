@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const axios = require('axios');
 const restUrl = 'http://localhost:3000/api';
 
 
@@ -20,13 +21,13 @@ exports.checkUser = async (token) => {
 
 }
 
-exports.wishlistToUser = (data,token) => {
+exports.wishlistToUser = (data, token) => {
     // console.log(data);
     const body = {
-        user : {
+        user: {
             data
         },
-        
+
     };
     fetch(restUrl + '/user', {
         method: 'PUT',
@@ -34,7 +35,7 @@ exports.wishlistToUser = (data,token) => {
             'Authorization': '' + token,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({user : {wishlist:data}}),
+        body: JSON.stringify({ user: { wishlist: data } }),
     })
         .then((response) => response.json())
 
@@ -47,4 +48,17 @@ exports.wishlistToUser = (data,token) => {
             console.error('Error:', error);
         });
 
+}
+
+exports.getWishlisted = () => {
+    console.log("entra");
+    axios.get(restUrl + '/user/wishlisted', {
+        responseType: 'json'
+    })
+        .then(function (res) {
+            console.log(res);
+        })
+        .catch(function (err) {
+            console.log('Error de conexión ' + err);
+        });
 }

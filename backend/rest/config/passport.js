@@ -69,7 +69,8 @@ passport.use(new GitHubStrategy({
           email: profile.username.toLowerCase() + "@gmail.com",
           image: profile.photos[0].value,
           type: "client",
-          provider: "github"
+          provider: "github",
+          wishlist: []
         });
         user.save(function (err) {
           // if (err) {
@@ -105,7 +106,8 @@ passport.use(new GoogleStrategy({
           email: profile.email,
           image: profile.photos[0].value,
           type: "client",
-          provider: "google"
+          provider: "google",
+          wishlist: []
         });
         user.save(function (err) {
           // if (err) {

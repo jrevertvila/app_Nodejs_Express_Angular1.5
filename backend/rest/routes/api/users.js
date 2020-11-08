@@ -21,6 +21,13 @@ router.get('/user', auth.required, function (req, res, next) {
   }).catch(next);
 });
 
+router.get('/user/wishlisted', auth.optional, function (req, res, next) {
+  console.log("ENTRA EN GET WISHLISTED");
+  User.find().distinct('wishlist').then(function(items){
+    return res.json({items: items});
+  }).catch(next);
+});
+
 router.put('/user', auth.required, function (req, res, next) {
   console.log("HA ENTRADO EN UPDATE USER =====================");
   User.findById(req.payload.id).then(function (user) {
