@@ -41,8 +41,10 @@ if(isProduction){
 }
 require('./models/User');
 require('./models/merch/Brand');
-require('./models/merch/Shoes');
-require('./models/merch/Sweatshirt');
+// require('./models/merch/Shoes');
+// require('./models/merch/Sweatshirt');
+require('./models/merch/Category');
+require('./models/merch/Item');
 // require('./config/passport');
 
 app.use(passport.initialize());

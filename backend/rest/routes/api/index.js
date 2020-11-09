@@ -6,6 +6,7 @@ router.use('/articles', require('./articles'));
 router.use('/tweets', require('./tweets'));
 router.use('/releases', require('./releases'));
 router.use('/tags', require('./tags'));
+router.use('/wishlisted', require('./wishlistedItems'));
 
 router.use(function(err, req, res, next){
   if(err.name === 'ValidationError'){

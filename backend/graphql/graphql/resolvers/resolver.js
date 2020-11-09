@@ -11,16 +11,16 @@ const QueryResolvers = {
 
 const MerchResolvers = require('./merch/merch.resolver.js')
 const BrandResolvers = require('./merch/brand.resolver.js');
-const ShoesResolvers = require('./merch/shoes.resolver.js');
-const SweatshirtResolvers = require('./merch/sweatshirt.resolver.js');
+const ItemResolvers = require('./merch/item.resolver.js')
+const CategoryResolvers = require('./merch/category.resolver.js');
 
 
 const resolvers = merge(
     QueryResolvers,
     MerchResolvers,
     BrandResolvers,
-    ShoesResolvers,
-    SweatshirtResolvers
+    ItemResolvers,
+    CategoryResolvers
 
 );
 module.exports = resolvers;

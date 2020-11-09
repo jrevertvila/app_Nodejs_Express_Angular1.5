@@ -9,6 +9,7 @@ const resolvers = {
 
     Mutation: {
         addToWishlist: (root, { input }, req) => {
+            console.log(req.req.headers);
             return request.wishlistToUser({wishlist:input.id},req.req.headers.authorization);
         },
         removeFromWishlist: (root, { input }, req) => {

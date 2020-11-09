@@ -32,7 +32,7 @@ router.put('/user', auth.required, function (req, res, next) {
   console.log("HA ENTRADO EN UPDATE USER =====================");
   User.findById(req.payload.id).then(function (user) {
     if (!user) { return res.sendStatus(401); }
-
+console.log("REQ BODY ===============");
     console.log(req.body);
     // only update fields that were actually passed...
     if (typeof req.body.user.username !== 'undefined') {
@@ -51,9 +51,10 @@ router.put('/user', auth.required, function (req, res, next) {
       user.setPassword(req.body.user.password);
     }
     if (typeof req.body.user.wishlist !== 'undefined') {
+      console.log("HAY UN WISHLIST");
       if (!user.wishlist.includes(req.body.user.wishlist)){
         user.wishlist = user.wishlist.concat(req.body.user.wishlist);
-      }      
+      }
     }
     if (typeof req.body.user.wishlist_split !== 'undefined') {
       user.wishlist = user.wishlist.filter(item => item != req.body.user.wishlist_split);   

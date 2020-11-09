@@ -1,6 +1,3 @@
-<style>
-
-</style>
 <div class="wrapper-editor-merch">
     <div class="container-editor-merch">
 
@@ -33,9 +30,60 @@
 
         <br><br>
 
-        <h1>Create new product</h1>
-        
+        <section class="CategorySection">
+            <h2>Categories Panel</h2>
+            <div class="brandList">
+                <div class="brandItem" ng-repeat="category in $ctrl.allCategories">
+                    <div class="brandItem__data">
+                        {{$index + 1}} - {{category.name}}
+                    </div>
+                    <div class="brandItem__options">
+                        <button>Edit</button>
+                        <button ng-click="$ctrl.deleteCategory(category.slug)">Remove</button>
+                    </div>
 
+                </div>
+            </div>
+            <br>
+            <div class="creatorCategory">
+                <label for="categoryName">Name:</label><input type="text" name="categoryName" id="categoryName"
+                    ng-model="$ctrl.category.name">
+                <label for="categoryDesc">Description:</label><input type="text" name="categoryDesc" id="categoryDesc"
+                    ng-model="$ctrl.category.description">
+                <button class="btn-submit-category" type="button" ng-click="$ctrl.submitCategory()">Create
+                    Category</button>
+
+            </div>
+        </section>
+
+        <br><br>
+
+        <section class="ItemSection">
+            <h2>Create new Item</h2>
+            <div class="creatorItem">
+                <label for="itemName">Name:</label><input type="text" name="itemName" id="itemName"
+                    ng-model="$ctrl.item.name"><br>
+                <label for="itemDesc">Description:</label><input type="text" name="itemDesc" id="itemDesc"
+                    ng-model="$ctrl.item.description"><br>
+                <label for="itemDesc">Category:</label>
+                <select name="itemCategory" id="itemCategory" ng-model="$ctrl.item.category">
+                    <option ng-repeat="category in $ctrl.allCategories" value="{{category.id}}">{{category.name}}</option>
+                </select><br>
+                <label for="itemDesc">Brand:</label>
+                <select name="itemBrand" id="itemBrand" ng-model="$ctrl.item.brand">
+                    <option ng-repeat="brand in $ctrl.allBrands" value="{{brand.id}}">{{brand.name}}</option>
+                </select><br>
+                <label for="itemSizes">Sizes: (Separar por comas [ , ])</label><input type="text" name="itemSizes"
+                    id="itemSizes" ng-model="$ctrl.item.sizes"><br>
+                <label for="itemColors">Colors: (Separar por comas [ , ])</label><input type="text" name="itemColors"
+                    id="itemColors" ng-model="$ctrl.item.colors"><br>
+                <label for="itemImages">Images: (Separar por comas [ , ])</label><textarea name="itemImages" style="font-size: 12px;"
+                    id="itemImages" cols="70" rows="5" ng-model="$ctrl.item.images"></textarea><br>
+
+                <button class="btn-submit-item" type="button" ng-click="$ctrl.submitItem()">Create Item</button>
+
+            </div>
+        </section>
 
 
     </div>

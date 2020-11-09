@@ -23,6 +23,11 @@ function EditorMerchConfig($stateProvider) {
           return Brand.getAll().then(
             (brands) => brands,
           )
+        },
+        categories: function (Category) {
+          return Category.getAll().then(
+            (categories) => categories,
+          )
         }
       }
     });

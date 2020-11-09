@@ -21,7 +21,7 @@ exports.checkUser = async (token) => {
 
 }
 
-exports.wishlistToUser = (data, token) => {
+exports.wishlistToUser = async (data, token) => {
     // console.log(data);
     const body = {
         user: {
@@ -29,19 +29,20 @@ exports.wishlistToUser = (data, token) => {
         },
 
     };
-    fetch(restUrl + '/user', {
+    return await fetch(restUrl + '/user', {
         method: 'PUT',
         headers: {
             'Authorization': '' + token,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ user: { wishlist: data } }),
+        body: JSON.stringify({ user: data }),
     })
         .then((response) => response.json())
 
         .then((data) => {
             console.log('Success:', data);
-            console.log(data);
+            // console.log(data);
+            return data;
         })
 
         .catch((error) => {
@@ -50,13 +51,13 @@ exports.wishlistToUser = (data, token) => {
 
 }
 
-exports.getWishlisted = () => {
+exports.getWishlisted = async () => {
     console.log("entra");
-    axios.get(restUrl + '/user/wishlisted', {
+    return await axios.get(restUrl + '/wishlisted', {
         responseType: 'json'
     })
         .then(function (res) {
-            console.log(res);
+            return res.data.item;
         })
         .catch(function (err) {
             console.log('Error de conexión ' + err);

@@ -18,6 +18,11 @@ function MerchConfig($stateProvider) {
           return Brand.getAll().then(
             (brands) => brands,
           )
+        },
+        wishlisted: function (Merch) {
+          return Merch.getWishlisted().then(
+            (wishlisted) => wishlisted,
+          )
         }
       }
     })
@@ -30,16 +35,7 @@ function MerchConfig($stateProvider) {
       title: 'Item',
       resolve: {
         item: function (Merch, $stateParams) {
-          // console.log(Brand);
-          // let info = {
-          //   "name": "Fila",
-          //   "description": "Marca de articulos y ropa deportiva",
-          //   "web": "www.fila.com"
-          // }
-          // console.log(Brand.createBrand(info));
-          return Merch.get({ data: $stateParams}).then(
-            (merch) => merch,
-          )
+          return Merch.get({ data: $stateParams}).then( (merch) => merch )
         }
 
       }

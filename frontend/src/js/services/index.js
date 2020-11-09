@@ -39,6 +39,9 @@ servicesModule.service('Merch', MerchService);
 import BrandService from './brand.service';
 servicesModule.service('Brand', BrandService);
 
+import CategoryService from './category.service';
+servicesModule.service('Category', CategoryService);
+
 
 
 export default servicesModule;

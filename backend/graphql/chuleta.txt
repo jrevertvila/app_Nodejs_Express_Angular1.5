@@ -99,3 +99,40 @@ mutation createSweatshirt($input: SweatshirtInput) {
     "images":["https://www.snipes.es/dw/image/v2/BDCB_PRD/on/demandware.static/-/Sites-snse-master-eu/default/dw20ad0149/1843746_P.jpg?sw=780&sh=780&sm=fit&sfrm=png","https://www.snipes.es/dw/image/v2/BDCB_PRD/on/demandware.static/-/Sites-snse-master-eu/default/dwe939ffd5/1843746_P1.jpg?sw=780&sh=780&sm=fit&sfrm=png","https://www.snipes.es/dw/image/v2/BDCB_PRD/on/demandware.static/-/Sites-snse-master-eu/default/dwcb056193/1843746_P2.jpg?sw=780&sh=780&sm=fit&sfrm=png"]
   }
 }
+
+https://www.snipes.es/dw/image/v2/BDCB_PRD/on/demandware.static/-/Sites-snse-master-eu/default/dw20ad0149/1843746_P.jpg?sw=780&sh=780&sm=fit&sfrm=png,https://www.snipes.es/dw/image/v2/BDCB_PRD/on/demandware.static/-/Sites-snse-master-eu/default/dwe939ffd5/1843746_P1.jpg?sw=780&sh=780&sm=fit&sfrm=png,https://www.snipes.es/dw/image/v2/BDCB_PRD/on/demandware.static/-/Sites-snse-master-eu/default/dwcb056193/1843746_P2.jpg?sw=780&sh=780&sm=fit&sfrm=png
+
+
+
+# item ===========
+
+mutation createItem($input:ItemInput){
+  createItem(input:$input){
+    id
+    slug
+    name
+    description
+    category{
+      name
+    }
+    brand{
+      name
+    }
+    sizes
+    colors
+    images
+  }
+}
+
+
+{
+  "input": {
+    "name": "Zapatillas Streetcheck",
+    "description": "Zapatillas adidas",
+    "category": "5fa87e5273739f9a285a912d",
+    "brand": "5fa81824a06b4d0a17b9d7b1",
+    "sizes": ["40","41","42","43","44","45"],
+    "colors": ["blanco","negro","rojo"],
+    "images": ["https://images-na.ssl-images-amazon.com/images/I/71BcCuXn4gL._AC_UX395_.jpg","https://mazashop.es/3240-home_default/zapatillas-de-basquet-adidas-streetcheckee9658.jpg","https://images-na.ssl-images-amazon.com/images/I/617rNrV2XFL._AC_UY395_.jpg"]
+  }
+}
