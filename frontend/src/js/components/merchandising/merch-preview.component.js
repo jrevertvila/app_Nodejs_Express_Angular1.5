@@ -9,6 +9,10 @@ class MerchPreviewCtrl {
         
     }
 
+    addWishlist(item) {
+        this._Merch.addToWishlist(item.id);
+    }
+
 }
 
 let MerchPreview = {

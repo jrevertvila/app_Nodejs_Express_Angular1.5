@@ -5,6 +5,7 @@ const typeDefs = gql`
         item(slug: String!): Item
         items(limit: Int, offset: Int): [Item]
         wishlisted(limit: Int, offset: Int): [Item]
+        wishlist(items: [String]): [Item]
     }
     extend type Mutation {
         createItem(input: ItemInput): Item

@@ -24,6 +24,12 @@ const resolvers = {
       });
       // 
     },
+
+    wishlist: async (_, {items}) => {
+
+      return Item.find({ '_id': { $in: items }  }).exec();
+
+    },
   },
 
   Mutation: {
