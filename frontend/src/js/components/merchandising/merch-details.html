@@ -1,0 +1,51 @@
+<div class="item__left__side">
+    <div class="imgs__preview">
+        <img ng-repeat="image in $ctrl.item.images" src="{{image}}" alt="preview" width="130px" class="img_preview">
+    </div>
+    <img src="{{$ctrl.item.images[0]}}" alt="image" class="item__img">
+    <!-- <div class="item__img"></div> -->
+</div>
+
+<div class="item__right__side">
+    <div class="item__meta">
+        <span class="item__brand">{{$ctrl.item.brand.name}}</span> -
+        <span class="item__type">{{$ctrl.item.__typename}}</span>
+    </div>
+    <hr>
+    <div class="item__data">
+        <div class="item__title">{{$ctrl.item.name}}</div>
+        <br>
+        <div class="item__stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            &nbsp;1047
+        </div><br>
+        <span class="item__subtitle">Choose color:</span>
+        <div class="choose__color">
+            <div class="color__op" ng-repeat="color in $ctrl.item.colors">
+                <span>{{color}}</span>
+            </div>
+        </div>
+        <br>
+        <span class="item__subtitle">Choose color:</span>
+        <div class="choose__size">
+            <div class="size__op" ng-repeat="size in $ctrl.item.sizes">
+                <span>{{size}}</span>
+            </div>
+        </div>
+        <br><br><br>
+        <div class="item__buy__options">
+            <div class="item__buy item__buy--amazon">
+                <i class="fab fa-amazon"></i>&nbsp;
+                <span>Amazon</span>
+            </div>
+            <div class="item__buy item__buy--ebay">
+                <i class="fab fa-ebay"></i>
+            </div>
+        </div>
+
+    </div>
+</div>

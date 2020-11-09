@@ -1,0 +1,10 @@
+<div class="all__merch__products">
+    <merch-preview ng-repeat="item in $ctrl.list" item="item">
+    </merch-preview>
+</div>
+
+<list-pagination
+    total-pages="$ctrl.listConfig.totalPages"
+    current-page="$ctrl.listConfig.currentPage"
+    ng-hide="$ctrl.listConfig.totalPages <= 1">
+</list-pagination>

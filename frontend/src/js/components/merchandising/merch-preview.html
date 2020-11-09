@@ -1,0 +1,9 @@
+<div class="merch__product" ui-sref="app.item({ type:'{{$ctrl.item.__typename | lowercase}}',slug:'{{$ctrl.item.slug}}'})">
+    <div ></div>
+    <img src="{{$ctrl.item.images[0]}}" alt="" class="merch__product__img">
+    <div class="merch__product__info">
+        <span class="merch__product__info__title">{{$ctrl.item.name}}</span>
+        <span>{{$ctrl.item.brand.name}}</span>
+    </div>
+    <button class="add_wishlist" ng-click="$ctrl.addWishlist($ctrl.item);$event.stopPropagation();"><3</button>
+</div>

@@ -14,13 +14,13 @@ const resolvers = {
       return Item.findOne({ slug: slug }).exec();
 
     },
-    items: () => {
-      return Item.find().exec();
+    items: (_, {limit, offset}) => {
+      return Item.find().skip(offset).limit(limit).exec();
     },
 
-    wishlisted: async () => {
+    wishlisted: async (_, {limit, offset}) => {
       return await request.getWishlisted().then(async (data) => {
-        return await Item.find({ '_id': { $in: data } }).exec();
+        return await Item.find({ '_id': { $in: data } }).skip(offset).limit(limit).exec();
       });
       // 
     },

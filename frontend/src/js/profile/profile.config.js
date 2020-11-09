@@ -21,16 +21,23 @@ function ProfileConfig($stateProvider) {
 
   .state('app.profile.main', {
     url:'',
-    controller: 'ProfileArticlesCtrl',
+    controller: 'ProfileTweetsCtrl',
     controllerAs: '$ctrl',
-    templateUrl: 'profile/profile-articles.html',
+    templateUrl: 'profile/profile-tweets.html',
     title: 'Profile'
   })
   .state('app.profile.favorites', {
     url:'/favorites',
-    controller: 'ProfileArticlesCtrl',
+    controller: 'ProfileTweetsCtrl',
     controllerAs: '$ctrl',
-    templateUrl: 'profile/profile-articles.html',
+    templateUrl: 'profile/profile-tweets.html',
+    title: 'Favorites'
+  })
+  .state('app.profile.wishlist', {
+    url:'/wishlist',
+    controller: 'ProfileTweetsCtrl',
+    controllerAs: '$ctrl',
+    templateUrl: 'profile/profile-wishlist.html',
     title: 'Favorites'
   });
 

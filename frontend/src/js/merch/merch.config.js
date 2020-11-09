@@ -9,21 +9,21 @@ function MerchConfig($stateProvider) {
       templateUrl: 'merch/MainPage.html',
       title: 'Merchandising',
       resolve: {
-        merch: function (Merch) {
-          return Merch.getAll().then(
-            (merch) => merch,
-          )
-        },
+        // merch: function (Merch) {
+        //   return Merch.getAll().then(
+        //     (merch) => merch,
+        //   )
+        // },
         brands: function (Brand) {
           return Brand.getAll().then(
             (brands) => brands,
           )
-        },
-        wishlisted: function (Merch) {
-          return Merch.getWishlisted().then(
-            (wishlisted) => wishlisted,
-          )
         }
+        // wishlisted: function (Merch) {
+        //   return Merch.getWishlisted().then(
+        //     (wishlisted) => wishlisted,
+        //   )
+        // }
       }
     })
 

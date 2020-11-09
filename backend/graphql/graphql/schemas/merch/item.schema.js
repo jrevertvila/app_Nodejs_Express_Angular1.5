@@ -3,8 +3,8 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
     extend type Query {
         item(slug: String!): Item
-        items: [Item]
-        wishlisted: [Item]
+        items(limit: Int, offset: Int): [Item]
+        wishlisted(limit: Int, offset: Int): [Item]
     }
     extend type Mutation {
         createItem(input: ItemInput): Item

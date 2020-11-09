@@ -8,12 +8,48 @@ export default class Merch {
     this._GQL = GraphQLClient;
   }
 
+  query(config) {
+
+    if (!config.filters.limit) { 
+      config.filters.limit = 10;
+    }
+
+    if (!config.filters.offset) {
+      config.filters.offset = 0;
+    }
+
+    let query = `
+      query getItems{
+        items(limit:${config.filters.limit},offset:${config.filters.offset}){
+          id
+          slug
+          name
+          description
+          category {
+            id
+            slug
+            name
+          }
+          brand {
+            id
+            slug
+            name
+          }
+          sizes
+          colors
+          images
+        }
+      }
+      `
+      return this._GQL.get(query);
+  }
+
 
   getAll() {
 
     let query = `
       query getItems{
-        items{
+        items(limit:10,offset:0){
           id
           slug
           name
@@ -135,11 +171,18 @@ export default class Merch {
     return this._GQL.post(query, variables);
   }
 
-  getWishlisted() {
+  getWishlisted(config) {
+    if (!config.filters.limit) { 
+      config.filters.limit = 10;
+    }
+
+    if (!config.filters.offset) {
+      config.filters.offset = 0;
+    }
 
     let query = `
       query getWishlisted{
-        wishlisted{
+        wishlisted(limit:${config.filters.limit},offset:${config.filters.offset}){
           id
           slug
           name
@@ -160,7 +203,6 @@ export default class Merch {
         }
       }
       `
-
     return this._GQL.get(query);
   }
 

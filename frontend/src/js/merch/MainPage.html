@@ -7,7 +7,10 @@
 <div class="merch__content">
     <a ui-sref="app.editorMerch">Create new product</a>
     <h2>All Products</h2>
-    <div class="all__merch__products">
+
+    <merch-list limit="10" list-config="$ctrl.listConfig"></merch-list>
+
+    <!-- <div class="all__merch__products">
         <div class="merch__product" ng-repeat="product in $ctrl.allMerch" ui-sref="app.item({ type:'{{product.__typename | lowercase}}',slug:'{{product.slug}}'})">
             <div ></div>
             <img src="{{product.images[0]}}" alt="" class="merch__product__img">
@@ -18,10 +21,11 @@
             <button class="add_wishlist" ng-click="$ctrl.addWishlist(product);$event.stopPropagation();"><3</button>
         </div>
 
-    </div>
+    </div> -->
     <br>
     <h2>Top Products</h2>
-    <div class="all__merch__products">
+    <merch-list limit="10" list-config="$ctrl.listConfigWishlist"></merch-list>
+    <!-- <div class="all__merch__products">
         <div class="merch__product" ng-repeat="product in $ctrl.allWishlisted" ui-sref="app.item({ type:'{{product.__typename | lowercase}}',slug:'{{product.slug}}'})">
             <div ></div>
             <img src="{{product.images[0]}}" alt="" class="merch__product__img">
@@ -32,7 +36,7 @@
             <button class="add_wishlist" ng-click="$ctrl.addWishlist(product);$event.stopPropagation();"><3</button>
         </div>
 
-    </div>
+    </div> -->
     
     <h2>All brands</h2>
     <div class="all_merch_brands">

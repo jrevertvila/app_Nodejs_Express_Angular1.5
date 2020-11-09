@@ -56,4 +56,13 @@ componentsModule.component('releasePreview', ReleasePreview);
 import ListPagination from './tweets-helpers/list-pagination.component';
 componentsModule.component('listPagination', ListPagination);
 
+import MerchDetails from './merchandising/merch-details.component';
+componentsModule.component('merchDetails', MerchDetails);
+
+import MerchList from './merchandising/merch-list.component';
+componentsModule.component('merchList', MerchList);
+
+import MerchPreview from './merchandising/merch-preview.component';
+componentsModule.component('merchPreview', MerchPreview);
+
 export default componentsModule;
