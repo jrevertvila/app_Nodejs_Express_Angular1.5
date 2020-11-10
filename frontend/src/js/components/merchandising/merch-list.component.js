@@ -57,13 +57,23 @@ class MerchListCtrl {
                         this.listConfig.totalPages = Math.ceil(res.itemsCount / this.limit);
                     }
                 );
-        } else {
+        } else if (this.listConfig.mode == "wishlisted") {
             this._Merch
                 .getWishlisted(queryConfig)
                 .then(
                     (res) => {
                         this.loading = false;
                         this.list = res.wishlisted;
+                        this.listConfig.totalPages = Math.ceil(res.itemsCount / this.limit);
+                    }
+                );
+        } else if (this.listConfig.mode == "userWishlist") {
+            this._Merch
+                .getUserWishlist(this.listConfig.username)
+                .then(
+                    (res) => {
+                        this.loading = false;
+                        this.list = res;
                         this.listConfig.totalPages = Math.ceil(res.itemsCount / this.limit);
                     }
                 );

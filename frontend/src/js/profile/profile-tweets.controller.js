@@ -7,23 +7,29 @@ class ProfileArticlesCtrl {
 
     this.profileState = $state.current.name.replace('app.profile.', '');
 
-    // Both favorites and author articles require the 'all' type
+    this.listConfigWishlist = {
+      type: 'all',
+      mode: 'userWishlist',
+      username: this.profile.username
+  };
+
     this.listConfig = { type: 'all' };
 
-    // `main` state's filter should be by author
     if (this.profileState === 'main') {
       this.listConfig.filters = { author: this.profile.username };
-      console.log(this.listConfig);
-      // Set page title
+
+
       $rootScope.setPageTitle('@' + this.profile.username);
 
     } else if (this.profileState === 'favorites') {
       this.listConfig.filters = { favorited: this.profile.username };
-      // Set page title
-      $rootScope.setPageTitle(`Articles favorited by ${this.profile.username}`);
-    } else if (this.profileState === 'favorites') {
+
+      $rootScope.setPageTitle(`Tweets favorited by ${this.profile.username}`);
+
+
+    } else if (this.profileState === 'wishlist') {
       this.listConfig.filters = { favorited: this.profile.username };
-      // Set page title
+
       $rootScope.setPageTitle(`Wishlist - ${this.profile.username}`);
     }
 

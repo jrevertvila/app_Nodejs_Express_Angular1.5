@@ -1,22 +1,22 @@
 var router = require('express').Router();
+const { json } = require('body-parser');
 const { request } = require('express');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var requests = require('./requests.js');
 
 
-router.get('/', function(req, res, next) {
-  User.find().distinct('wishlist').then(function(item){
-    return res.json({item: item});
+router.get('/', function (req, res, next) {
+  User.find().distinct('wishlist').then(function (item) {
+    return res.json({ item: item });
   }).catch(next);
 });
 
-router.get('/:username',async function(req, res, next) {
-  await User.find({"username":req.params.username}).distinct('wishlist').then(function(item){
-    console.log(item);
+router.get('/:username', async function (req, res, next) {
+  await User.find({ "username": req.params.username }).distinct('wishlist').then(async function (item) {
     let query = `
       query getWishlist{
-        wishlist(items:["5fa99642fe606a6b3095c047"]){
+        wishlist(items:${arrToString(item)}){
           id
           slug
           name
@@ -37,12 +37,21 @@ router.get('/:username',async function(req, res, next) {
         }
       }
     `
-    requests.getWishlistUser(query).then((data) => {
-      console.log(data.data.wishlist);
+    return await requests.getWishlistUser(query).then((data) => {
+      return res.json({ wishlist: data.data.wishlist });
     })
-    return res.json({item: item});
   }).catch(next);
 });
+
+let arrToString = (arr) => {
+  let result = "[";
+  for (let x = 0; x < arr.length; x++) {
+    result += ('"'+arr[x]+'",')
+  }
+  result = result.slice(0,-1);
+  result += ']';
+  return result;
+}
 
 
 module.exports = router;

@@ -10,7 +10,7 @@ export default class Merch {
 
   query(config) {
 
-    if (!config.filters.limit) { 
+    if (!config.filters.limit) {
       config.filters.limit = 10;
     }
 
@@ -41,7 +41,7 @@ export default class Merch {
         }
       }
       `
-      return this._GQL.get(query);
+    return this._GQL.get(query);
   }
 
 
@@ -172,7 +172,7 @@ export default class Merch {
   }
 
   getWishlisted(config) {
-    if (!config.filters.limit) { 
+    if (!config.filters.limit) {
       config.filters.limit = 10;
     }
 
@@ -204,6 +204,16 @@ export default class Merch {
       }
       `
     return this._GQL.get(query);
+  }
+
+  getUserWishlist(username) {
+    return this._$http({
+      url: this._AppConstants.api + '/wishlisted/'+username,
+      method: 'GET'
+    }).then(res => {
+      return res.data.wishlist
+    }
+    );
   }
 
 
