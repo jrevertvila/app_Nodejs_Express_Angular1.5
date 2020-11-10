@@ -57,53 +57,36 @@ And on the frontend:
 gulp
 ```
 
-## Built with 🛠️
 
-### Frontend
-* [AngularJS](https://developer.mozilla.org/es/docs/Web/JavaScript)
-* [JQuery](https://jquery.com/)
-### Backend
-* [PHP](https://www.php.net/)
-* Framework PHP:  The backend simulates a real backend framework
-### Database
-* [MySQL](https://www.mysql.com/)
-
-## Features
-The application is divided into two important modules, the administrator panel and the client view.
-
-### Admin:
-* This is the administration panel. The movies module is the only one available right now. You can add new movies to the database. This module is a CRUD with the view controller model to easily view, edit or delete movies.
-
-* As the application is under development, dummies can be created to fill our database quickly.
-
-* In addition you can create new genres that will appear dynamically both in client view and to add a new movie.
-
-### Client:
-* All client view modules are developed with the controller view model.
+### Features:
 
 | Module | Description |
 | --- | --- |
-| Home | Main page of the application where you can go directly to the store or consult the most viewed and valued genres and movies |
-| Shop | Show all available movies with a filtering system by genre and sort by different fields. |
-| Search | This module acts as a component throughout the application and can be easily implemented, e.g. in the home and the store. Automatically redirects to the store through the fields searched. |
-| Contact | Contact form with Google Maps API integration and Mailgun |
-| Cart | Show the products you want to buy |
-| Login | Login module with local users and social login with Google and GHub using Firebase |
-| Profile | In this module you can see your purchases, change your profile information and your favorite movies |
+| Home | Main page of the application where you can see the latests tweets or releases of the application |
+| Merchandising | Show all merch items of the website, and the most wishlisted items. |
+| Releases | This module it's used for show the latests news of the application |
+| Tweets | You can post tweets, replies of the tweets and give likes. |
+| Login | Login module with local users and social login with Google and GHub using passport |
+| Profile | In this module you can see your wishlist, change your profile information and see your own tweets or favorited tweets |
 
 
-## APIs
-* [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/tutorial?hl=es)
-* [Firebase](https://firebase.google.com/)
-* [OMDb](http://www.omdbapi.com/)
+### Built with 🛠️
+* [Angular JS](https://angularjs.org/)
+* [Node JS](https://nodejs.org/es/)
+* [Express](https://expressjs.com/es/)
+* [GraphQL](https://graphql.org/)
+* [Mongoose](https://mongoosejs.com/)
+* [MongoDB](https://www.mongodb.com/)
 
 
-## Other Technologies
-* [DataTables](https://datatables.net/)
-* [JQWidgets](https://www.jqwidgets.com/)
-* [OWLCarousel](https://owlcarousel2.github.io/OwlCarousel2/)
-* [FontAwesome](https://fontawesome.com/)
-* [Bootstrap](https://getbootstrap.com/)
-* [Multiple-Select](http://multiple-select.wenzhixin.net.cn/)
-* [Dropzone](https://www.dropzonejs.com/)
-* [Toastr](https://codeseven.github.io/toastr/)
+## Other technologies
+* [Apollo - Client](https://www.npmjs.com/package/apollo-client)
+* [Apollo - Server](https://www.npmjs.com/package/apollo-server)
+* [Gulp](https://www.npmjs.com/package/gulp)
+* [Babel](https://www.npmjs.com/package/@babel/core)
+* [Browserify](https://www.npmjs.com/package/browserify)
+* [Toastr](https://www.npmjs.com/package/toastr)
+* [Toastr](https://www.npmjs.com/package/toastr)
+* [Toastr](https://www.npmjs.com/package/toastr)
+* [Toastr](https://www.npmjs.com/package/toastr)
+* [Toastr](https://www.npmjs.com/package/toastr)
