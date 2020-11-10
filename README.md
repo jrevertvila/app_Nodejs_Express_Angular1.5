@@ -5,15 +5,21 @@ This application simulates the operation of Twitter. You can like the tweet. Fol
 ## Preview 📷
 All the images shown below are provisional and will not be the final aspect of the web application:
 ### Homepage
-![Preview home](https://github.com/Jooui/movieshop/blob/master/readme%20media/homepage.png)
+![Preview home](https://github.com/Jooui/app_Nodejs_Express_Angular1.5/blob/master/github_media/home.png)
 ### Merchandising
-![Preview shop](https://github.com/Jooui/movieshop/blob/master/readme%20media/shop.png)
+![Preview merch](https://github.com/Jooui/app_Nodejs_Express_Angular1.5/blob/master/github_media/merch_list.png)
+### Merchandising - Details
+![Preview merch details](https://github.com/Jooui/app_Nodejs_Express_Angular1.5/blob/master/github_media/details_merch.png)
+### Tweet
+![Preview tweet](https://github.com/Jooui/app_Nodejs_Express_Angular1.5/blob/master/github_media/details_tweet.png)
 ### Releases
-![Preview shop](https://github.com/Jooui/movieshop/blob/master/readme%20media/shop.png)
+![Preview releases](https://github.com/Jooui/app_Nodejs_Express_Angular1.5/blob/master/github_media/releases_list.png)
+### Releases - Details
+![Preview releases details](https://github.com/Jooui/app_Nodejs_Express_Angular1.5/blob/master/github_media/details_releases.png)
 ### Login/Register
-![Preview login](https://github.com/Jooui/movieshop_fw_php/blob/master/readme%20media/login.png)
+![Preview login](https://github.com/Jooui/app_Nodejs_Express_Angular1.5/blob/master/github_media/login1.png)
 ### Profile
-![Preview profile](https://github.com/Jooui/movieshop_fw_php/blob/master/readme%20media/profile.png)
+![Preview profile](https://github.com/Jooui/app_Nodejs_Express_Angular1.5/blob/master/github_media/profile.png)
 
 
 ## Getting Started
