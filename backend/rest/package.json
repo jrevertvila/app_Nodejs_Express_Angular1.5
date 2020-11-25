@@ -39,7 +39,9 @@
     "request": "2.69.0",
     "slug": "0.9.1",
     "swagger-ui-express": "2.0.6",
-    "underscore": "1.8.3"
+    "underscore": "1.8.3",
+    "prom-client": "^12.0.0",
+    "response-time": "^2.3.2"
   },
   "devDependencies": {
     "faker": "^5.1.0",

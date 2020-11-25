@@ -36,7 +36,8 @@ if (!isProduction) {
 if(isProduction){
   mongoose.connect(process.env.MONGODB_URI);
 } else {
-  mongoose.connect('mongodb://localhost/twentty');
+  // mongoose.connect('mongodb://localhost/twentty');
+  mongoose.connect('mongodb://mongo:27017/twentty');
   mongoose.set('debug', true);
 }
 require('./models/User');

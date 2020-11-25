@@ -4,6 +4,23 @@ var Tweet = mongoose.model('Tweet');
 var User = mongoose.model('User');
 var auth = require('../auth');
 
+//LOAD/IMPORT PROMETHEUS 
+
+let client = require('prom-client');
+
+const collectDefaultMetrics = client.collectDefaultMetrics;
+collectDefaultMetrics({ timeout: 5000 });
+
+const counterTweetsEndpoint = new client.Counter({
+  name: 'counterTweetsEndpoint',
+  help: 'Total gets tweets of endpoint'
+});
+
+const counterTweetDetailsEndpoint = new client.Counter({
+  name: 'counterTweetDetailsEndpoint',
+  help: 'Total gets tweets of endpoint'
+});
+
 // Preload tweet obj
 router.param('tweet', function (req, res, next, slug) {
   Tweet.findOne({ slug: slug })
@@ -21,6 +38,7 @@ router.param('tweet', function (req, res, next, slug) {
 
 //RETURN LAST 20 TWEETS
 router.get('/', auth.optional, function (req, res, next) {
+  counterTweetsEndpoint.inc();
   var query = {};
   var limit = 20;
   var offset = 0;
@@ -150,6 +168,7 @@ router.post('/', auth.required, function (req, res, next) {
 
 //RETURN ONE TWEET BY SLUG
 router.get('/:tweet', auth.optional, function (req, res, next) {
+  counterTweetDetailsEndpoint.inc();
   Promise.all([
     req.payload ? User.findById(req.payload.id) : null,
     req.tweet.populate('author').execPopulate(),
